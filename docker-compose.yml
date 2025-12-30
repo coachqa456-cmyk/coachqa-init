@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: coachqa-postgres
+    environment:
+      POSTGRES_DB: coachqa_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      # Set to "true" to use complete database setup (000-complete-database-setup.sql)
+      # Set to "false" or leave empty to use individual migrations (001-010)
+      USE_COMPLETE_SETUP: ${USE_COMPLETE_SETUP:-true}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./coachqa-backend/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - coachqa-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API Service
+  backend:
+    build:
+      context: ./coachqa-backend
+      dockerfile: Dockerfile
+    container_name: coachqa-backend
+    environment:
+      NODE_ENV: production
+      PORT: 9002
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: coachqa_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      JWT_SECRET: ${JWT_SECRET:-your-secret-key-change-in-production}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-your-refresh-secret-key-change-in-production}
+      # Add other environment variables as needed
+      # EMAIL_HOST: ${EMAIL_HOST}
+      # EMAIL_PORT: ${EMAIL_PORT}
+      # EMAIL_USER: ${EMAIL_USER}
+      # EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+    ports:
+      - "9002:9002"
+    volumes:
+      - ./coachqa-backend/logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - coachqa-network
+    restart: unless-stopped
+
+  # Frontend UI Service
+  frontend:
+    build:
+      context: ./coachqa-ui
+      dockerfile: Dockerfile
+    container_name: coachqa-frontend
+    environment:
+      VITE_API_URL: http://127.0.0.1:9002
+    ports:
+      - "9001:80"
+    depends_on:
+      - backend
+    networks:
+      - coachqa-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  coachqa-network:
+    driver: bridge
+

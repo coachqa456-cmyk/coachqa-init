@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: coachqa-postgres-dev
+    environment:
+      POSTGRES_DB: coachqa_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      # Set to "true" to use complete database setup (000-complete-database-setup.sql)
+      # Set to "false" or leave empty to use individual migrations (001-010)
+      USE_COMPLETE_SETUP: ${USE_COMPLETE_SETUP:-true}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+      - ./coachqa-backend/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - coachqa-network-dev
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API Service (Development)
+  backend:
+    build:
+      context: ./coachqa-backend
+      dockerfile: Dockerfile.dev
+    container_name: coachqa-backend-dev
+    environment:
+      NODE_ENV: development
+      PORT: 9002
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: coachqa_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-key}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev-refresh-secret-key}
+      SYNC_DB: "false"
+    ports:
+      - "9002:9002"
+    volumes:
+      - ./coachqa-backend/src:/app/src
+      - ./coachqa-backend/logs:/app/logs
+      - ./coachqa-backend/migrations:/app/migrations
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - coachqa-network-dev
+    restart: unless-stopped
+    command: npm run dev
+
+  # Frontend UI Service (Development)
+  frontend:
+    build:
+      context: ./coachqa-ui
+      dockerfile: Dockerfile.dev
+    container_name: coachqa-frontend-dev
+    environment:
+      VITE_API_URL: http://127.0.0.1:9002
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./coachqa-ui/src:/app/src
+      - ./coachqa-ui/public:/app/public
+      - ./coachqa-ui/index.html:/app/index.html
+      - ./coachqa-ui/vite.config.ts:/app/vite.config.ts
+      - ./coachqa-ui/package.json:/app/package.json
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - coachqa-network-dev
+    restart: unless-stopped
+
+volumes:
+  postgres_data_dev:
+    driver: local
+
+networks:
+  coachqa-network-dev:
+    driver: bridge
+

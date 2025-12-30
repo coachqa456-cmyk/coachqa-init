@@ -1,0 +1,13 @@
+{
+    "name": "coachqa",
+    "private": true,
+    "scripts": {
+      "dev": "concurrently -k -n BACKEND,UI -c blue,green \"npm run dev --prefix coachqa-backend\" \"npm run dev --prefix coachqa-ui\"",
+      "build": "concurrently \"npm run build --prefix coachqa-backend\" \"npm run build --prefix coachqa-ui\"",
+      "lint": "concurrently \"npm run lint --prefix coachqa-backend\" \"npm run lint --prefix coachqa-ui\""
+    },
+    "devDependencies": {
+      "concurrently": "^9.0.0"
+    }
+  }
+  
