@@ -4,6 +4,22 @@ A comprehensive quality assurance and coaching platform for engineering teams.
 
 ## 🚀 Quick Start
 
+### Clone Repositories
+
+```bash
+# Clone the main project repository
+git clone https://github.com/coachqa456-cmyk/coachqa-init.git CoachQA-Project
+cd CoachQA-Project
+
+# Clone backend repository (if separate)
+git clone https://github.com/coachqa456-cmyk/coachqa-backend.git coachqa-backend
+
+# Clone frontend repository (if separate)
+git clone https://github.com/coachqa456-cmyk/coachqa-ui.git coachqa-ui
+```
+
+### Start Services
+
 ```bash
 # Start all services
 docker-compose -f docker-compose.dev.yml up -d
@@ -80,6 +96,26 @@ CoachQA-Project/
 - Docker and Docker Compose
 - Node.js 18+ (for local development)
 - PostgreSQL 15+ (or use Docker)
+- Git
+
+### Repository Setup
+
+If the backend and frontend are in separate repositories:
+
+```bash
+# Clone backend repository
+git clone https://github.com/coachqa456-cmyk/coachqa-backend.git coachqa-backend
+
+# Clone frontend repository
+git clone https://github.com/coachqa456-cmyk/coachqa-ui.git coachqa-ui
+```
+
+If using a monorepo, clone the main repository:
+
+```bash
+git clone <main-repository-url> CoachQA-Project
+cd CoachQA-Project
+```
 
 ### Common Commands
 
