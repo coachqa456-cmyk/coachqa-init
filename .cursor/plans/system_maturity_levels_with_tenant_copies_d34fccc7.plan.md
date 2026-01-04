@@ -264,5 +264,3 @@ if (activeStep === 2) {
 
 - `coachqa-ui/src/utils/api.ts`
 - `coachqa-ui/src/pages/platform-admin/TenantDetails.tsx`
-- `coachqa-ui/src/components/onboarding/OnboardingWizard.tsx`
-- `coachqa-ui/src/pages/maturity-levels/MaturityLevelManagement.tsx` (create or update)

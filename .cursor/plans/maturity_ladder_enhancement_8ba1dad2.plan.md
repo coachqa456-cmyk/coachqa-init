@@ -111,7 +111,3 @@ Update the Maturity Ladder system to match the documented specification with new
 5. Update assessment form component
 6. Update maturity levels seed data
 7. Update display components to show new fields
-
-## Notes
-
-- Self-rated quality score (1-5) can be used separately or combined with maturity level
