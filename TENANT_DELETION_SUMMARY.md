@@ -243,3 +243,5 @@ See `TENANT_DELETION_GUIDE.md` for complete details:
 **Key Takeaway:** Tenant deletion is **safe** (requires 0 users), **thorough** (cascades to all data), and **permanent** (no undo).
 
 
+
+
