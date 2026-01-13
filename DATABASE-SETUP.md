@@ -5,13 +5,15 @@
 ### Fresh Database Setup (Recommended)
 
 ```bash
-# Start with complete database setup
+# Start with complete database setup (includes comprehensive demo data)
 docker-compose -f docker-compose.dev.yml down -v
 docker-compose -f docker-compose.dev.yml up -d postgres
 
 # Wait for initialization (check logs)
 docker logs -f coachqa-postgres-dev
 ```
+
+**Note**: All migrations run automatically on first database initialization, including migration 023 which seeds comprehensive demo data. This means demo data is automatically available after the first setup.
 
 ### Using Individual Migrations
 
@@ -65,6 +67,19 @@ postgres:
 - **Demo Tenant**: demo-tenant
 - **Demo User**: user@demo.com / Demo@123
 - **Custom Role**: Custom Team Lead for demo tenant
+- **Comprehensive Demo Data** (Migration 023): Automatically included on initial setup
+  - 12 demo users across different roles
+  - 4 squads with members
+  - 7 coaching sessions
+  - 4 quality scorecards
+  - 5 feedback submissions
+  - 4 maturity assessments
+  - 8 enablement resources
+  - 6 test logger sessions
+  - 7 test debt items
+  - 4 change tracking entries
+  - 4 career assessments
+  - See [DEMO-DATA-GUIDE.md](./DEMO-DATA-GUIDE.md) for details
 
 ## Default Users
 
