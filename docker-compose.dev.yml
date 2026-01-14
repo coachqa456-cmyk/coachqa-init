@@ -70,12 +70,14 @@ services:
       - ./coachqa-ui/index.html:/app/index.html
       - ./coachqa-ui/vite.config.ts:/app/vite.config.ts
       - ./coachqa-ui/package.json:/app/package.json
+      - ./coachqa-ui/package-lock.json:/app/package-lock.json
       - /app/node_modules
     depends_on:
       - backend
     networks:
       - coachqa-network-dev
     restart: unless-stopped
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
 
   # Swagger UI Service (Development) - Port 9004
   swagger-ui:
@@ -97,6 +99,7 @@ services:
     networks:
       - coachqa-network-dev
     restart: unless-stopped
+    command: npm run dev
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:9004/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
       interval: 30s

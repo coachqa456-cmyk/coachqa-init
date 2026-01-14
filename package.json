@@ -2,15 +2,17 @@
     "name": "coachqa",
     "private": true,
     "scripts": {
-        "dev": "concurrently -k -n BACKEND,UI -c blue,green \"npm run dev --prefix coachqa-backend\" \"npm run dev --prefix coachqa-ui\"",
-        "build": "concurrently \"npm run build --prefix coachqa-backend\" \"npm run build --prefix coachqa-ui\"",
-        "lint": "concurrently \"npm run lint --prefix coachqa-backend\" \"npm run lint --prefix coachqa-ui\""
+        "dev": "concurrently -k -n BACKEND,UI,SWAGGER -c blue,green,yellow \"npm run dev --prefix coachqa-backend\" \"npm run dev --prefix coachqa-ui\" \"npm run dev --prefix coachqa-swagger-ui\"",
+        "build": "concurrently \"npm run build --prefix coachqa-backend\" \"npm run build --prefix coachqa-ui\" \"npm run build --prefix coachqa-swagger-ui\"",
+        "lint": "concurrently \"npm run lint --prefix coachqa-backend\" \"npm run lint --prefix coachqa-ui\"",
+        "swagger-ui": "npm run dev --prefix coachqa-swagger-ui",
+        "swagger": "npm run swagger-ui",
+        "swagger:open": "start http://127.0.0.1:9004",
+        "docs": "start http://127.0.0.1:9003",
+        "api-docs": "start http://127.0.0.1:9004/api-docs.json",
+        "api-health": "curl http://127.0.0.1:9002/api/health || echo Backend not running"
     },
     "devDependencies": {
         "concurrently": "^9.0.0"
-    },
-    "dependencies": {
-        "quill": "^2.0.3",
-        "react-quill-new": "^3.7.0"
     }
 }
