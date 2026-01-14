@@ -71,6 +71,42 @@ services:
       - coachqa-network
     restart: unless-stopped
 
+  # Swagger UI Service - Port 9004
+  swagger-ui:
+    build:
+      context: ./coachqa-swagger-ui
+      dockerfile: Dockerfile
+    container_name: coachqa-swagger-ui
+    environment:
+      PORT: 9004
+      BACKEND_URL: http://backend:9002
+      BACKEND_URL_EXTERNAL: http://127.0.0.1:9002
+    ports:
+      - "9004:9004"
+    depends_on:
+      - backend
+    networks:
+      - coachqa-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:9004/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  # Documentation Service (Docusaurus) - Port 9003
+  docs:
+    build:
+      context: ./coachqa-docs
+      dockerfile: Dockerfile
+    container_name: coachqa-docs
+    ports:
+      - "9003:80"
+    networks:
+      - coachqa-network
+    restart: unless-stopped
+
 volumes:
   postgres_data:
     driver: local

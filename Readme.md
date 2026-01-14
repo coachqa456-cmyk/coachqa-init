@@ -11,11 +11,17 @@ A comprehensive quality assurance and coaching platform for engineering teams.
 git clone https://github.com/coachqa456-cmyk/coachqa-init.git CoachQA-Project
 cd CoachQA-Project
 
-# Clone backend repository (if separate)
+# Clone backend repository
 git clone https://github.com/coachqa456-cmyk/coachqa-backend.git coachqa-backend
 
-# Clone frontend repository (if separate)
+# Clone frontend repository
 git clone https://github.com/coachqa456-cmyk/coachqa-ui.git coachqa-ui
+
+# Clone Swagger UI repository
+git clone https://github.com/coachqa456-cmyk/coachqa-swagger-ui.git coachqa-swagger-ui
+
+# Clone documentation repository
+git clone https://github.com/coachqa456-cmyk/coachqa-docs.git coachqa-docs
 ```
 
 ### Start Services
@@ -66,6 +72,8 @@ docker logs -f coachqa-postgres-dev
 - **Frontend** (`coachqa-ui`) - React/Vite application on port 9001
 - **Backend** (`coachqa-backend`) - Node.js/Express API on port 9002
 - **Database** (`postgres`) - PostgreSQL database on port 5432
+- **Swagger UI** (`coachqa-swagger-ui`) - Interactive API documentation on port 9004
+- **Documentation** (`coachqa-docs`) - Docusaurus documentation site on port 9003
 
 ### Technology Stack
 
@@ -84,6 +92,8 @@ CoachQA-Project/
 │   └── docs/                 # Backend documentation
 ├── coachqa-ui/               # Frontend application
 │   └── src/                  # Source code
+├── coachqa-swagger-ui/       # Swagger UI service (separate repository)
+├── coachqa-docs/             # Docusaurus documentation (separate repository)
 ├── docker-compose.dev.yml    # Development configuration
 ├── docker-compose.yml        # Production configuration
 └── docs/                     # Project documentation
@@ -108,6 +118,12 @@ git clone https://github.com/coachqa456-cmyk/coachqa-backend.git coachqa-backend
 
 # Clone frontend repository
 git clone https://github.com/coachqa456-cmyk/coachqa-ui.git coachqa-ui
+
+# Clone Swagger UI repository
+git clone https://github.com/coachqa456-cmyk/coachqa-swagger-ui.git coachqa-swagger-ui
+
+# Clone documentation repository
+git clone https://github.com/coachqa456-cmyk/coachqa-docs.git coachqa-docs
 ```
 
 If using a monorepo, clone the main repository:
@@ -197,8 +213,11 @@ docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db
 ## 📝 API Documentation
 
 Once the backend is running, access API documentation at:
-- **Swagger UI**: `http://127.0.0.1:9002/api-docs`
+- **Swagger UI (Standalone)**: `http://127.0.0.1:9004` - Interactive API documentation
+- **Swagger UI (Legacy)**: `http://127.0.0.1:9002/api-docs` - Legacy endpoint (to be removed)
+- **OpenAPI Spec (JSON)**: `http://127.0.0.1:9002/api-docs.json` - OpenAPI specification
 - **Health Check**: `http://127.0.0.1:9002/api/health`
+- **Documentation Site**: `http://127.0.0.1:9003` - Docusaurus documentation
 
 ## 🤝 Contributing
 
@@ -215,7 +234,9 @@ Once the backend is running, access API documentation at:
 
 - **Frontend**: http://127.0.0.1:9001
 - **Backend API**: http://127.0.0.1:9002/api
-- **API Docs**: http://127.0.0.1:9002/api-docs
+- **Swagger UI**: http://127.0.0.1:9004
+- **Documentation**: http://127.0.0.1:9003
+- **API Docs (Legacy)**: http://127.0.0.1:9002/api-docs
 - **Health Check**: http://127.0.0.1:9002/api/health
 
 ---
