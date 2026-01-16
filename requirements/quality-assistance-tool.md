@@ -1,8 +1,8 @@
-# Quality assistance Tool
+# QEnabler Tool
 
 ## ✅ Why This App?
 
-Modern software teams are moving away from classical QA (Quality Assurance) — where QA engineers own the testing — towards **Quality Assistance (QAa)**, where **everyone is responsible for quality**.
+Modern software teams are moving away from classical QA (Quality Assurance) — where QA engineers own the testing — towards **QEnabler (QAa)**, where **everyone is responsible for quality**.
 
 But in this shift, new challenges emerge:
 
@@ -13,13 +13,13 @@ But in this shift, new challenges emerge:
 - **Test debt accumulates** with no ownership.
 - **QE career paths become vague**, leading to disengagement.
 
-CoachQA is built to solve all these.
+QEnabler is built to solve all these.
 
 ---
 
-## 🎯 What Problem Does CoachQA Solve?
+## 🎯 What Problem Does QEnabler Solve?
 
-| Problem | Solution in CoachQA |
+| Problem | Solution in QEnabler |
 | --- | --- |
 | QE roles lack clarity | **Coaching Tracker** logs enablement work, not test writing |
 | Quality maturity is invisible | **Squad Scorecard & Maturity Ladder** show it clearly |
@@ -59,7 +59,7 @@ CoachQA is built to solve all these.
 
 [Pitch](https://www.notion.so/Pitch-2c0f958ea41480a3b32ed71d923b7812?pvs=21)
 
-[🧭 Tenant Organization User Journey in CoachQA ](https://www.notion.so/Tenant-Organization-User-Journey-in-CoachQA-2c0f958ea41480f3b08df9a01785335d?pvs=21)
+[🧭 Tenant Organization User Journey in QEnabler ](https://www.notion.so/Tenant-Organization-User-Journey-in-QEnabler-2c0f958ea41480f3b08df9a01785335d?pvs=21)
 
 [AI Integration](https://www.notion.so/AI-Integration-2c0f958ea414803c8c81e9d0eda09dc8?pvs=21)
 

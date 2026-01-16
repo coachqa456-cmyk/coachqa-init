@@ -95,7 +95,7 @@ Retrieves current menu permissions for a role.
 ### Component Architecture
 
 #### MenuPermissionEditor Component
-Located at: `coachqa-ui/src/components/role-management/MenuPermissionEditor.tsx`
+Located at: `QEnabler-ui/src/components/role-management/MenuPermissionEditor.tsx`
 
 **Props:**
 - `roleId`: ID of the role being edited
@@ -114,7 +114,7 @@ Located at: `coachqa-ui/src/components/role-management/MenuPermissionEditor.tsx`
   - Uses platform admin tenant-specific endpoints
 
 #### RoleManagement Page
-Located at: `coachqa-ui/src/pages/platform-admin/RoleManagement.tsx`
+Located at: `QEnabler-ui/src/pages/platform-admin/RoleManagement.tsx`
 
 **Features:**
 - Lists all roles with filtering capabilities
@@ -124,7 +124,7 @@ Located at: `coachqa-ui/src/pages/platform-admin/RoleManagement.tsx`
 ### Backend Implementation
 
 #### Permission Update Logic
-Located at: `coachqa-backend/src/services/menu.service.ts`
+Located at: `QEnabler-backend/src/services/menu.service.ts`
 
 The `updateMenuPermissionsForRole` function:
 1. Validates that platform admin can edit system roles

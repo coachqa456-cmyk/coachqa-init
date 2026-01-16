@@ -1,6 +1,6 @@
 # How Google Authentication Works - Step by Step
 
-This document provides a detailed, step-by-step explanation of how Google OAuth authentication works in the CoachQA platform.
+This document provides a detailed, step-by-step explanation of how Google OAuth authentication works in the QEnabler platform.
 
 ## Quick Overview
 
@@ -33,7 +33,7 @@ Google authentication allows users to sign in or sign up using their Google acco
 
 #### 1. Google OAuth Provider Initialization
 
-**Location:** `coachqa-ui/src/components/providers/AppProviders.tsx`
+**Location:** `QEnabler-ui/src/components/providers/AppProviders.tsx`
 
 ```typescript
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -56,7 +56,7 @@ const GOOGLE_CLIENT_ID = "746343245098-72ffk4klhps027k7po4497bjdag4hv07.apps.goo
 
 #### 2. User Clicks "Sign in with Google"
 
-**Location:** `coachqa-ui/src/pages/auth/LoginPage.tsx` or `SignupPage.tsx`
+**Location:** `QEnabler-ui/src/pages/auth/LoginPage.tsx` or `SignupPage.tsx`
 
 ```typescript
 <GoogleLogin
@@ -102,7 +102,7 @@ credentialResponse = {
 
 #### 4. Frontend Handler Processes the Token
 
-**Location:** `coachqa-ui/src/pages/auth/LoginPage.tsx`
+**Location:** `QEnabler-ui/src/pages/auth/LoginPage.tsx`
 
 ```typescript
 const handleGoogleSuccess = async (credentialResponse: any) => {
@@ -127,7 +127,7 @@ const handleGoogleSuccess = async (credentialResponse: any) => {
 
 #### 5. Frontend API Call
 
-**Location:** `coachqa-ui/src/contexts/TenantAuthContext.tsx`
+**Location:** `QEnabler-ui/src/contexts/TenantAuthContext.tsx`
 
 ```typescript
 const loginWithGoogle = async (idToken: string) => {
@@ -155,7 +155,7 @@ const loginWithGoogle = async (idToken: string) => {
 
 #### 6. Backend Receives Request
 
-**Location:** `coachqa-backend/src/routes/auth.routes.ts` → `coachqa-backend/src/controllers/auth.controller.ts`
+**Location:** `QEnabler-backend/src/routes/auth.routes.ts` → `QEnabler-backend/src/controllers/auth.controller.ts`
 
 ```typescript
 export const googleLogin = async (req, res, next) => {
@@ -177,7 +177,7 @@ export const googleLogin = async (req, res, next) => {
 
 #### 7. Backend Verifies Token with Google
 
-**Location:** `coachqa-backend/src/services/auth.service.ts`
+**Location:** `QEnabler-backend/src/services/auth.service.ts`
 
 ```typescript
 import { OAuth2Client } from 'google-auth-library';
@@ -356,7 +356,7 @@ res.json({
 
 #### 14. Frontend Stores in localStorage
 
-**Location:** `coachqa-ui/src/contexts/TenantAuthContext.tsx`
+**Location:** `QEnabler-ui/src/contexts/TenantAuthContext.tsx`
 
 ```typescript
 const result = await response.json();
@@ -678,16 +678,16 @@ const GOOGLE_CLIENT_ID = "746343245098-72ffk4klhps027k7po4497bjdag4hv07.apps.goo
 ## 📝 Code Locations
 
 ### Frontend
-- **Provider Setup**: `coachqa-ui/src/components/providers/AppProviders.tsx`
-- **Login Page**: `coachqa-ui/src/pages/auth/LoginPage.tsx`
-- **Signup Page**: `coachqa-ui/src/pages/auth/SignupPage.tsx`
-- **Auth Context**: `coachqa-ui/src/contexts/TenantAuthContext.tsx`
+- **Provider Setup**: `QEnabler-ui/src/components/providers/AppProviders.tsx`
+- **Login Page**: `QEnabler-ui/src/pages/auth/LoginPage.tsx`
+- **Signup Page**: `QEnabler-ui/src/pages/auth/SignupPage.tsx`
+- **Auth Context**: `QEnabler-ui/src/contexts/TenantAuthContext.tsx`
 
 ### Backend
-- **Routes**: `coachqa-backend/src/routes/auth.routes.ts`
-- **Controller**: `coachqa-backend/src/controllers/auth.controller.ts`
-- **Service**: `coachqa-backend/src/services/auth.service.ts`
-- **Token Service**: `coachqa-backend/src/services/token.service.ts`
+- **Routes**: `QEnabler-backend/src/routes/auth.routes.ts`
+- **Controller**: `QEnabler-backend/src/controllers/auth.controller.ts`
+- **Service**: `QEnabler-backend/src/services/auth.service.ts`
+- **Token Service**: `QEnabler-backend/src/services/token.service.ts`
 
 ---
 

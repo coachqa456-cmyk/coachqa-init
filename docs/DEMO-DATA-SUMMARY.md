@@ -2,11 +2,11 @@
 
 ## Overview
 
-A comprehensive demo data package has been created for the CoachQA platform to support free demos and evaluations. This package includes realistic sample data across all platform modules.
+A comprehensive demo data package has been created for the QEnabler platform to support free demos and evaluations. This package includes realistic sample data across all platform modules.
 
 ## Files Created
 
-1. **`coachqa-backend/migrations/023-seed-comprehensive-demo-data.sql`**
+1. **`QEnabler-backend/migrations/023-seed-comprehensive-demo-data.sql`**
    - Main SQL migration script that populates all modules with demo data
    - Idempotent (can be run multiple times safely)
    - Creates 12 users, 4 squads, and data across all 11 modules
@@ -69,7 +69,7 @@ A comprehensive demo data package has been created for the CoachQA platform to s
 ### Quick Start
 ```bash
 # Run the demo data migration
-docker exec -i coachqa-postgres-dev psql -U postgres -d coachqa_db < coachqa-backend/migrations/023-seed-comprehensive-demo-data.sql
+docker exec -i QEnabler-postgres-dev psql -U postgres -d QEnabler_db < QEnabler-backend/migrations/023-seed-comprehensive-demo-data.sql
 ```
 
 ### Login Examples

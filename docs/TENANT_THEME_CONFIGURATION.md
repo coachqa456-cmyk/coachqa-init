@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CoachQA platform now supports tenant-specific theme configuration, allowing each tenant to customize their branding and color scheme during the onboarding process. This feature enables white-labeling and better brand alignment for each organization using the platform.
+The QEnabler platform now supports tenant-specific theme configuration, allowing each tenant to customize their branding and color scheme during the onboarding process. This feature enables white-labeling and better brand alignment for each organization using the platform.
 
 ## Features
 
@@ -45,7 +45,7 @@ Added the following columns to the `tenants` table:
 **To apply the migration:**
 
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 psql -U your_username -d your_database -f migrations/016-add-tenant-theme-config.sql
 ```
 
@@ -53,7 +53,7 @@ psql -U your_username -d your_database -f migrations/016-add-tenant-theme-config
 
 ### Model Updates
 
-**File:** `coachqa-backend/src/models/Tenant.ts`
+**File:** `QEnabler-backend/src/models/Tenant.ts`
 
 Added `ThemeConfig` interface and new fields:
 
@@ -146,7 +146,7 @@ Body: {
 
 ### Theme Context
 
-**File:** `coachqa-ui/src/contexts/ThemeContext.tsx`
+**File:** `QEnabler-ui/src/contexts/ThemeContext.tsx`
 
 The `ThemeContext` has been enhanced to:
 1. Fetch tenant-specific theme configuration
@@ -170,7 +170,7 @@ const MyComponent = () => {
 
 #### ThemePreview Component
 
-**File:** `coachqa-ui/src/components/theme/ThemePreview.tsx`
+**File:** `QEnabler-ui/src/components/theme/ThemePreview.tsx`
 
 Displays a visual preview of the theme configuration showing:
 - Primary and secondary color swatches
@@ -190,7 +190,7 @@ import { ThemePreview } from '../../components/theme/ThemePreview';
 
 #### ThemeCustomizer Component
 
-**File:** `coachqa-ui/src/components/theme/ThemeCustomizer.tsx`
+**File:** `QEnabler-ui/src/components/theme/ThemeCustomizer.tsx`
 
 Interactive theme customization UI featuring:
 - Template selector dropdown
@@ -212,7 +212,7 @@ import { ThemeCustomizer } from '../../components/theme/ThemeCustomizer';
 
 ### Tenant Creation Flow
 
-**File:** `coachqa-ui/src/pages/platform-admin/TenantManagement.tsx`
+**File:** `QEnabler-ui/src/pages/platform-admin/TenantManagement.tsx`
 
 The tenant creation dialog now has two tabs:
 
@@ -386,18 +386,18 @@ Potential future improvements:
 ## Related Files
 
 ### Backend
-- `coachqa-backend/migrations/016-add-tenant-theme-config.sql`
-- `coachqa-backend/src/models/Tenant.ts`
-- `coachqa-backend/src/controllers/platformAdmin.controller.ts`
-- `coachqa-backend/src/controllers/tenant.controller.ts`
-- `coachqa-backend/src/routes/tenant.routes.ts`
+- `QEnabler-backend/migrations/016-add-tenant-theme-config.sql`
+- `QEnabler-backend/src/models/Tenant.ts`
+- `QEnabler-backend/src/controllers/platformAdmin.controller.ts`
+- `QEnabler-backend/src/controllers/tenant.controller.ts`
+- `QEnabler-backend/src/routes/tenant.routes.ts`
 
 ### Frontend
-- `coachqa-ui/src/contexts/ThemeContext.tsx`
-- `coachqa-ui/src/components/theme/ThemePreview.tsx`
-- `coachqa-ui/src/components/theme/ThemeCustomizer.tsx`
-- `coachqa-ui/src/pages/platform-admin/TenantManagement.tsx`
-- `coachqa-ui/src/utils/api.ts`
+- `QEnabler-ui/src/contexts/ThemeContext.tsx`
+- `QEnabler-ui/src/components/theme/ThemePreview.tsx`
+- `QEnabler-ui/src/components/theme/ThemeCustomizer.tsx`
+- `QEnabler-ui/src/pages/platform-admin/TenantManagement.tsx`
+- `QEnabler-ui/src/utils/api.ts`
 
 ## Support
 
@@ -411,7 +411,7 @@ For issues or questions:
 
 **Version:** 1.0  
 **Last Updated:** January 4, 2026  
-**Author:** CoachQA Development Team
+**Author:** QEnabler Development Team
 
 
 

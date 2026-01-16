@@ -2,9 +2,9 @@ services:
   # PostgreSQL Database
   postgres:
     image: postgres:16-alpine
-    container_name: coachqa-postgres-dev
+    container_name: qenabler-postgres-dev
     environment:
-      POSTGRES_DB: coachqa_db
+      POSTGRES_DB: qenabler_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
@@ -13,9 +13,9 @@ services:
       - postgres_data_dev:/var/lib/postgresql/data
       # All SQL files in migrations/ will run automatically on first database initialization
       # This includes 023-seed-comprehensive-demo-data.sql which populates demo data
-      - ./coachqa-backend/migrations:/docker-entrypoint-initdb.d
+      - ./qenabler-backend/migrations:/docker-entrypoint-initdb.d
     networks:
-      - coachqa-network-dev
+      - qenabler-network-dev
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -25,15 +25,15 @@ services:
   # Backend API Service (Development)
   backend:
     build:
-      context: ./coachqa-backend
+      context: ./qenabler-backend
       dockerfile: Dockerfile.dev
-    container_name: coachqa-backend-dev
+    container_name: qenabler-backend-dev
     environment:
       NODE_ENV: development
       PORT: 9002
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_NAME: coachqa_db
+      DB_NAME: qenabler_db
       DB_USER: postgres
       DB_PASSWORD: postgres
       JWT_SECRET: ${JWT_SECRET:-dev-secret-key}
@@ -42,49 +42,50 @@ services:
     ports:
       - "9002:9002"
     volumes:
-      - ./coachqa-backend/src:/app/src
-      - ./coachqa-backend/logs:/app/logs
-      - ./coachqa-backend/migrations:/app/migrations
+      - ./qenabler-backend/src:/app/src
+      - ./qenabler-backend/logs:/app/logs
+      - ./qenabler-backend/migrations:/app/migrations
+      - ./qenabler-backend/ensure-database.js:/app/ensure-database.js
       - /app/node_modules
     depends_on:
       postgres:
         condition: service_healthy
     networks:
-      - coachqa-network-dev
+      - qenabler-network-dev
     restart: unless-stopped
-    command: npm run dev
+    command: sh -c "node ensure-database.js && npm run dev"
 
   # Frontend UI Service (Development)
   frontend:
     build:
-      context: ./coachqa-ui
+      context: ./qenabler-ui
       dockerfile: Dockerfile.dev
-    container_name: coachqa-frontend-dev
+    container_name: qenabler-frontend-dev
     environment:
       VITE_API_URL: http://127.0.0.1:9002
     ports:
       - "9001:9001"
     volumes:
-      - ./coachqa-ui/src:/app/src
-      - ./coachqa-ui/public:/app/public
-      - ./coachqa-ui/index.html:/app/index.html
-      - ./coachqa-ui/vite.config.ts:/app/vite.config.ts
-      - ./coachqa-ui/package.json:/app/package.json
-      - ./coachqa-ui/package-lock.json:/app/package-lock.json
+      - ./qenabler-ui/src:/app/src
+      - ./qenabler-ui/public:/app/public
+      - ./qenabler-ui/index.html:/app/index.html
+      - ./qenabler-ui/vite.config.ts:/app/vite.config.ts
+      - ./qenabler-ui/package.json:/app/package.json
+      - ./qenabler-ui/package-lock.json:/app/package-lock.json
       - /app/node_modules
     depends_on:
       - backend
     networks:
-      - coachqa-network-dev
+      - qenabler-network-dev
     restart: unless-stopped
     command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
 
   # Swagger UI Service (Development) - Port 9004
   swagger-ui:
     build:
-      context: ./coachqa-swagger-ui
+      context: ./qenabler-swagger-ui
       dockerfile: Dockerfile
-    container_name: coachqa-swagger-ui-dev
+    container_name: qenabler-swagger-ui-dev
     environment:
       PORT: 9004
       BACKEND_URL: http://backend:9002
@@ -92,12 +93,12 @@ services:
     ports:
       - "9004:9004"
     volumes:
-      - ./coachqa-swagger-ui:/app
+      - ./qenabler-swagger-ui:/app
       - /app/node_modules
     depends_on:
       - backend
     networks:
-      - coachqa-network-dev
+      - qenabler-network-dev
     restart: unless-stopped
     command: npm run dev
     healthcheck:
@@ -110,17 +111,17 @@ services:
   # Documentation Service (Docusaurus) - Port 9003
   docs:
     image: node:20-alpine
-    container_name: coachqa-docs-dev
+    container_name: qenabler-docs-dev
     environment:
       NODE_ENV: development
     ports:
       - "9003:9003"
     volumes:
-      - ./coachqa-docs:/app
+      - ./qenabler-docs:/app
       - /app/node_modules
     command: sh -c "cd /app && npm install && npm start -- --host 0.0.0.0"
     networks:
-      - coachqa-network-dev
+      - qenabler-network-dev
     restart: unless-stopped
 
 volumes:
@@ -128,6 +129,6 @@ volumes:
     driver: local
 
 networks:
-  coachqa-network-dev:
+  qenabler-network-dev:
     driver: bridge
 

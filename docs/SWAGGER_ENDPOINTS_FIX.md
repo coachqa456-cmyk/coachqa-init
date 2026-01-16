@@ -15,7 +15,7 @@ The Swagger documentation is generated at server startup. **You must restart the
 
 **Start the backend:**
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 npm run dev
 ```
 
@@ -47,7 +47,7 @@ After restart, you should see in Swagger UI:
 #### Check 1: Verify Routes File
 ```bash
 # Check if routes are defined
-cat coachqa-backend/src/routes/auth.routes.ts | grep "router.post"
+cat QEnabler-backend/src/routes/auth.routes.ts | grep "router.post"
 ```
 
 You should see:
@@ -57,7 +57,7 @@ You should see:
 #### Check 2: Verify Swagger Config
 ```bash
 # Check Swagger is scanning routes
-cat coachqa-backend/src/config/swagger.ts | grep "apis:"
+cat QEnabler-backend/src/config/swagger.ts | grep "apis:"
 ```
 
 Should show:
@@ -101,7 +101,7 @@ If they're in the JSON but not in UI, it's a browser/cache issue.
 ```powershell
 # Stop backend (Ctrl+C in terminal)
 # Then restart:
-cd coachqa-backend
+cd QEnabler-backend
 npm run dev
 ```
 
@@ -109,7 +109,7 @@ npm run dev
 ```bash
 # Stop backend (Ctrl+C)
 # Then restart:
-cd coachqa-backend
+cd QEnabler-backend
 npm run dev
 ```
 
@@ -154,7 +154,7 @@ After restarting:
 # 1. Stop backend (Ctrl+C)
 
 # 2. Clear any build artifacts (optional)
-cd coachqa-backend
+cd QEnabler-backend
 rm -rf dist  # or on Windows: rmdir /s dist
 
 # 3. Restart

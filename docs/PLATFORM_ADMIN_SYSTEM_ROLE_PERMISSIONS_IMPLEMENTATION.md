@@ -5,13 +5,13 @@ This document summarizes the implementation of platform admin system role permis
 
 ## Changes Made
 
-### 1. Frontend API Layer (`coachqa-ui/src/utils/api.ts`)
+### 1. Frontend API Layer (`QEnabler-ui/src/utils/api.ts`)
 **Added:**
 - `fetchAllSystemMenus(activeOnly: boolean)` - Fetches all system menus for platform admin
 
 **Location:** Lines 297-301
 
-### 2. Menu Permission Editor Component (`coachqa-ui/src/components/role-management/MenuPermissionEditor.tsx`)
+### 2. Menu Permission Editor Component (`QEnabler-ui/src/components/role-management/MenuPermissionEditor.tsx`)
 **Updated:**
 - Added import for `fetchAllSystemMenus`
 - Enhanced `useEffect` to handle system roles when `isPlatformAdmin=true` and `tenantId=null`
@@ -25,7 +25,7 @@ This document summarizes the implementation of platform admin system role permis
 - Lines 58-77: Added system role handling logic
 - Line 91: Added `isSystemRole` to dependency array
 
-### 3. Platform Admin Role Management Page (`coachqa-ui/src/pages/platform-admin/RoleManagement.tsx`)
+### 3. Platform Admin Role Management Page (`QEnabler-ui/src/pages/platform-admin/RoleManagement.tsx`)
 **Added:**
 - Import for `SecurityIcon` and `MenuPermissionEditor` component
 - State management for permissions dialog:
@@ -45,8 +45,8 @@ This document summarizes the implementation of platform admin system role permis
 
 ### 4. Backend Verification
 **Verified:**
-- `coachqa-backend/src/services/menu.service.ts` - Already supports platform admin editing system role permissions
-- `coachqa-backend/src/controllers/menu.controller.ts` - Properly passes `isPlatformAdmin` flag
+- `QEnabler-backend/src/services/menu.service.ts` - Already supports platform admin editing system role permissions
+- `QEnabler-backend/src/controllers/menu.controller.ts` - Properly passes `isPlatformAdmin` flag
 - No backend changes required
 
 ## Features Implemented

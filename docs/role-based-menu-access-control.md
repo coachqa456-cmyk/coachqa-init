@@ -88,24 +88,24 @@ Filtered menus displayed in sidebar
 
 ### Models
 
-#### SystemMenu (`coachqa-backend/src/models/SystemMenu.ts`)
+#### SystemMenu (`QEnabler-backend/src/models/SystemMenu.ts`)
 - Represents system-wide menu items
 - Editable only by platform admin
 - Readonly for tenants
 
-#### CustomMenu (`coachqa-backend/src/models/CustomMenu.ts`)
+#### CustomMenu (`QEnabler-backend/src/models/CustomMenu.ts`)
 - Represents tenant-specific menu items
 - Editable by tenant admin for their tenant
 - Isolated per tenant
 
-#### MenuPermission (`coachqa-backend/src/models/MenuPermission.ts`)
+#### MenuPermission (`QEnabler-backend/src/models/MenuPermission.ts`)
 - Links roles to menu access permissions
 - Supports both system and custom menus
 - Stores permission state per role per menu
 
 ### Services
 
-#### Menu Service (`coachqa-backend/src/services/menu.service.ts`)
+#### Menu Service (`QEnabler-backend/src/services/menu.service.ts`)
 
 **System Menu Functions:**
 - `getAllSystemMenus(activeOnly)`: Get all system menus
@@ -181,25 +181,25 @@ GET    /api/menus                                - Get available menus for tenan
 
 ### Components
 
-#### Sidebar (`coachqa-ui/src/components/layout/Sidebar.tsx`)
+#### Sidebar (`QEnabler-ui/src/components/layout/Sidebar.tsx`)
 - Dynamically fetches menus from backend
 - Filters menus based on user's role permissions
 - Groups menus by category
 - Handles loading states
 - Admin users see all menus automatically
 
-#### MenuPermissionEditor (`coachqa-ui/src/components/role-management/MenuPermissionEditor.tsx`)
+#### MenuPermissionEditor (`QEnabler-ui/src/components/role-management/MenuPermissionEditor.tsx`)
 - Reusable component for editing menu permissions
 - Displays system and custom menus separately
 - Shows visual indicators for non-editable permissions
 - Handles permission updates with proper authorization
 
-#### SystemMenuEditor (`coachqa-ui/src/components/menu-management/SystemMenuEditor.tsx`)
+#### SystemMenuEditor (`QEnabler-ui/src/components/menu-management/SystemMenuEditor.tsx`)
 - Dialog component for creating/editing system menus
 - Platform admin only
 - Validates menu paths and properties
 
-#### CustomMenuEditor (`coachqa-ui/src/components/menu-management/CustomMenuEditor.tsx`)
+#### CustomMenuEditor (`QEnabler-ui/src/components/menu-management/CustomMenuEditor.tsx`)
 - Dialog component for creating/editing custom menus
 - Tenant admin only
 - Validates menu paths and properties
@@ -208,37 +208,37 @@ GET    /api/menus                                - Get available menus for tenan
 
 #### Platform Admin Pages
 
-**SystemMenuManagement** (`coachqa-ui/src/pages/platform-admin/SystemMenuManagement.tsx`)
+**SystemMenuManagement** (`QEnabler-ui/src/pages/platform-admin/SystemMenuManagement.tsx`)
 - Manage all system menus
 - Create, edit, delete system menus
 - Reorder and enable/disable menus
 - Future: Configure subscription plan access
 
-**RolePermissions** (`coachqa-ui/src/pages/platform-admin/RolePermissions.tsx`)
+**RolePermissions** (`QEnabler-ui/src/pages/platform-admin/RolePermissions.tsx`)
 - Overview of all tenants
 - Quick access to manage role permissions per tenant
 - Search and filter tenants
 
-**TenantDetails** (Updated - `coachqa-ui/src/pages/platform-admin/TenantDetails.tsx`)
+**TenantDetails** (Updated - `QEnabler-ui/src/pages/platform-admin/TenantDetails.tsx`)
 - Added "Role Permissions" tab
 - Manage menu permissions for all roles in a tenant
 - View and edit role-based menu access
 
 #### Tenant Admin Pages
 
-**CustomMenuManagement** (`coachqa-ui/src/pages/menu-management/CustomMenuManagement.tsx`)
+**CustomMenuManagement** (`QEnabler-ui/src/pages/menu-management/CustomMenuManagement.tsx`)
 - Create and manage custom menus for tenant
 - Edit menu properties (path, title, icon, group, order)
 - Enable/disable custom menus
 
-**RoleManagement** (`coachqa-ui/src/pages/role-management/RoleManagement.tsx`)
+**RoleManagement** (`QEnabler-ui/src/pages/role-management/RoleManagement.tsx`)
 - View and manage menu permissions for roles
 - System roles shown as read-only (platform admin manages)
 - Custom roles can be fully managed by tenant admin
 
 ### API Client Functions
 
-All menu-related API functions are in `coachqa-ui/src/utils/api.ts`:
+All menu-related API functions are in `QEnabler-ui/src/utils/api.ts`:
 
 ```typescript
 // System Menus
@@ -473,25 +473,25 @@ When implemented:
 ## Related Files
 
 ### Backend
-- `coachqa-backend/migrations/005-add-menu-permissions.sql`
-- `coachqa-backend/src/models/SystemMenu.ts`
-- `coachqa-backend/src/models/CustomMenu.ts`
-- `coachqa-backend/src/models/MenuPermission.ts`
-- `coachqa-backend/src/services/menu.service.ts`
-- `coachqa-backend/src/controllers/menu.controller.ts`
-- `coachqa-backend/src/routes/menu.routes.ts`
+- `QEnabler-backend/migrations/005-add-menu-permissions.sql`
+- `QEnabler-backend/src/models/SystemMenu.ts`
+- `QEnabler-backend/src/models/CustomMenu.ts`
+- `QEnabler-backend/src/models/MenuPermission.ts`
+- `QEnabler-backend/src/services/menu.service.ts`
+- `QEnabler-backend/src/controllers/menu.controller.ts`
+- `QEnabler-backend/src/routes/menu.routes.ts`
 
 ### Frontend
-- `coachqa-ui/src/types/menu.ts`
-- `coachqa-ui/src/utils/api.ts`
-- `coachqa-ui/src/components/layout/Sidebar.tsx`
-- `coachqa-ui/src/components/role-management/MenuPermissionEditor.tsx`
-- `coachqa-ui/src/components/menu-management/SystemMenuEditor.tsx`
-- `coachqa-ui/src/components/menu-management/CustomMenuEditor.tsx`
-- `coachqa-ui/src/pages/platform-admin/SystemMenuManagement.tsx`
-- `coachqa-ui/src/pages/platform-admin/RolePermissions.tsx`
-- `coachqa-ui/src/pages/menu-management/CustomMenuManagement.tsx`
-- `coachqa-ui/src/pages/role-management/RoleManagement.tsx`
+- `QEnabler-ui/src/types/menu.ts`
+- `QEnabler-ui/src/utils/api.ts`
+- `QEnabler-ui/src/components/layout/Sidebar.tsx`
+- `QEnabler-ui/src/components/role-management/MenuPermissionEditor.tsx`
+- `QEnabler-ui/src/components/menu-management/SystemMenuEditor.tsx`
+- `QEnabler-ui/src/components/menu-management/CustomMenuEditor.tsx`
+- `QEnabler-ui/src/pages/platform-admin/SystemMenuManagement.tsx`
+- `QEnabler-ui/src/pages/platform-admin/RolePermissions.tsx`
+- `QEnabler-ui/src/pages/menu-management/CustomMenuManagement.tsx`
+- `QEnabler-ui/src/pages/role-management/RoleManagement.tsx`
 
 ## Support
 

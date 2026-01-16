@@ -1,6 +1,6 @@
 # Demo Data Guide
 
-This guide explains how to set up comprehensive demo data for the CoachQA platform free demo.
+This guide explains how to set up comprehensive demo data for the QEnabler platform free demo.
 
 ## Overview
 
@@ -91,20 +91,20 @@ The demo data script (`023-seed-comprehensive-demo-data.sql`) populates the data
 
 2. **Wait for database initialization:**
    ```bash
-   docker logs -f coachqa-postgres-dev
+   docker logs -f QEnabler-postgres-dev
    ```
    Wait until you see "database system is ready to accept connections"
 
 3. **Run the demo data migration:**
    ```bash
-   docker exec -i coachqa-postgres-dev psql -U postgres -d coachqa_db < coachqa-backend/migrations/023-seed-comprehensive-demo-data.sql
+   docker exec -i QEnabler-postgres-dev psql -U postgres -d QEnabler_db < QEnabler-backend/migrations/023-seed-comprehensive-demo-data.sql
    ```
 
 ### Option 2: Manual SQL Execution
 
 1. **Connect to the database:**
    ```bash
-   docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db
+   docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db
    ```
 
 2. **Run the migration:**
@@ -113,7 +113,7 @@ The demo data script (`023-seed-comprehensive-demo-data.sql`) populates the data
    ```
    Or if running locally:
    ```sql
-   \i coachqa-backend/migrations/023-seed-comprehensive-demo-data.sql
+   \i QEnabler-backend/migrations/023-seed-comprehensive-demo-data.sql
    ```
 
 ### Option 3: Fresh Database Setup
@@ -128,7 +128,7 @@ docker-compose -f docker-compose.dev.yml down -v
 docker-compose -f docker-compose.dev.yml up -d postgres
 
 # Wait for initialization
-docker logs -f coachqa-postgres-dev
+docker logs -f QEnabler-postgres-dev
 ```
 
 **Note:** The demo data script requires that migration `010-seed-demo-data.sql` has already been run (which creates the demo tenant and initial user).
@@ -202,7 +202,7 @@ To reset and re-seed the demo data:
 
 ```bash
 # Option 1: Reset specific tables (preserves users and squads)
-docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "
+docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db -c "
   DELETE FROM coaching_sessions WHERE tenant_id = (SELECT id FROM tenants WHERE slug = 'demo-tenant');
   DELETE FROM quality_scorecards WHERE tenant_id = (SELECT id FROM tenants WHERE slug = 'demo-tenant');
   DELETE FROM feedback_submissions WHERE tenant_id = (SELECT id FROM tenants WHERE slug = 'demo-tenant');
@@ -215,7 +215,7 @@ docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "
 "
 
 # Then re-run the demo data script
-docker exec -i coachqa-postgres-dev psql -U postgres -d coachqa_db < coachqa-backend/migrations/023-seed-comprehensive-demo-data.sql
+docker exec -i QEnabler-postgres-dev psql -U postgres -d QEnabler_db < QEnabler-backend/migrations/023-seed-comprehensive-demo-data.sql
 ```
 
 ## Troubleshooting
@@ -243,6 +243,6 @@ docker exec -i coachqa-postgres-dev psql -U postgres -d coachqa_db < coachqa-bac
 ## Support
 
 For issues or questions:
-1. Check database logs: `docker logs coachqa-postgres-dev`
-2. Verify migrations: `docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "\dt"`
-3. Review the migration file: `coachqa-backend/migrations/023-seed-comprehensive-demo-data.sql`
+1. Check database logs: `docker logs QEnabler-postgres-dev`
+2. Verify migrations: `docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db -c "\dt"`
+3. Review the migration file: `QEnabler-backend/migrations/023-seed-comprehensive-demo-data.sql`

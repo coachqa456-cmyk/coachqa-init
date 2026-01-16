@@ -16,12 +16,12 @@ Enhanced the tenant theme system with **localStorage caching** and **database pe
 ## 📁 Files Changed
 
 ### New Files (2)
-1. `coachqa-ui/src/pages/settings/TenantSettings.tsx` - Settings page
+1. `QEnabler-ui/src/pages/settings/TenantSettings.tsx` - Settings page
 2. `THEME_PERSISTENCE_UPDATE.md` - Detailed documentation
 
 ### Modified Files (2)
-1. `coachqa-ui/src/contexts/ThemeContext.tsx` - Added persistence logic
-2. `coachqa-ui/src/App.tsx` - Added settings route
+1. `QEnabler-ui/src/contexts/ThemeContext.tsx` - Added persistence logic
+2. `QEnabler-ui/src/App.tsx` - Added settings route
 
 ## 🚀 How to Use
 

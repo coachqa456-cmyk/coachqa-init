@@ -1,6 +1,6 @@
-# Docker Setup for CoachQA
+# Docker Setup for QEnabler
 
-This guide explains how to run the CoachQA application using Docker and Docker Compose.
+This guide explains how to run the QEnabler application using Docker and Docker Compose.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ docker-compose -f docker-compose.dev.yml down
 ## Services
 
 1. **PostgreSQL Database** - Port 5432
-   - Database: `coachqa_db`
+   - Database: `QEnabler_db`
    - User: `postgres`
    - Password: `postgres`
    - ⚠️ Change password in production!
@@ -58,7 +58,7 @@ docker-compose -f docker-compose.dev.yml down
 
 ### Backend Environment Variables
 
-Create a `.env` file in the `coachqa-backend` directory or set environment variables in `docker-compose.yml`:
+Create a `.env` file in the `QEnabler-backend` directory or set environment variables in `docker-compose.yml`:
 
 ```env
 JWT_SECRET=your-secret-key-change-in-production
@@ -67,14 +67,14 @@ NODE_ENV=production
 PORT=9002
 DB_HOST=postgres
 DB_PORT=5432
-DB_NAME=coachqa_db
+DB_NAME=QEnabler_db
 DB_USER=postgres
 DB_PASSWORD=postgres
 ```
 
 ### Frontend Environment Variables
 
-For production, set `VITE_API_URL` in the docker-compose.yml or create a `.env.production` file in `coachqa-ui`:
+For production, set `VITE_API_URL` in the docker-compose.yml or create a `.env.production` file in `QEnabler-ui`:
 
 ```env
 VITE_API_URL=http://localhost:9002/api
@@ -82,7 +82,7 @@ VITE_API_URL=http://localhost:9002/api
 
 ## Database Migrations
 
-Database migrations run automatically when the backend service starts. Migrations are located in `coachqa-backend/migrations/` and are executed in alphabetical order.
+Database migrations run automatically when the backend service starts. Migrations are located in `QEnabler-backend/migrations/` and are executed in alphabetical order.
 
 ## Useful Commands
 
@@ -97,7 +97,7 @@ docker-compose logs -f postgres
 
 # Execute commands in running container
 docker-compose exec backend sh
-docker-compose exec postgres psql -U postgres -d coachqa_db
+docker-compose exec postgres psql -U postgres -d QEnabler_db
 
 # Check service status
 docker-compose ps
@@ -164,10 +164,10 @@ ports:
 
 ```bash
 # Backup
-docker-compose exec postgres pg_dump -U postgres coachqa_db > backup.sql
+docker-compose exec postgres pg_dump -U postgres QEnabler_db > backup.sql
 
 # Restore
-docker-compose exec -T postgres psql -U postgres coachqa_db < backup.sql
+docker-compose exec -T postgres psql -U postgres QEnabler_db < backup.sql
 ```
 
 

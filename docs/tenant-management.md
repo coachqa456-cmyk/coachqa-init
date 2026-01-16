@@ -60,7 +60,7 @@ These endpoints internally reuse the tenant-scoped `User` service, but are calle
 
 ### Routes
 
-Defined in `coachqa-ui/src/App.tsx`:
+Defined in `QEnabler-ui/src/App.tsx`:
 
 - `/admin/tenants` → `TenantManagement` (list + tenant CRUD)
 - `/admin/tenants/:tenantId` → `TenantDetails` (tenant profile + tenant user CRUD)
@@ -69,7 +69,7 @@ Both are wrapped by `PlatformAdminProtectedRoute`, which checks **platform-admin
 
 ### `TenantManagement` page
 
-File: `coachqa-ui/src/pages/platform-admin/TenantManagement.tsx`
+File: `QEnabler-ui/src/pages/platform-admin/TenantManagement.tsx`
 
 - Displays a table of tenants with:
   - `Name`, `Slug`, `Users`, `Created`, `Actions`.
@@ -87,7 +87,7 @@ File: `coachqa-ui/src/pages/platform-admin/TenantManagement.tsx`
 
 ### `TenantDetails` page
 
-File: `coachqa-ui/src/pages/platform-admin/TenantDetails.tsx`
+File: `QEnabler-ui/src/pages/platform-admin/TenantDetails.tsx`
 
 - Header panel shows tenant profile:
   - Name, slug (chip), created date.

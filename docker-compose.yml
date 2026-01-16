@@ -2,9 +2,9 @@ services:
   # PostgreSQL Database
   postgres:
     image: postgres:16-alpine
-    container_name: coachqa-postgres
+    container_name: qenabler-postgres
     environment:
-      POSTGRES_DB: coachqa_db
+      POSTGRES_DB: qenabler_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       # Set to "true" to use complete database setup (000-complete-database-setup.sql)
@@ -14,9 +14,9 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./coachqa-backend/migrations:/docker-entrypoint-initdb.d
+      - ./qenabler-backend/migrations:/docker-entrypoint-initdb.d
     networks:
-      - coachqa-network
+      - qenabler-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -26,15 +26,15 @@ services:
   # Backend API Service
   backend:
     build:
-      context: ./coachqa-backend
+      context: ./qenabler-backend
       dockerfile: Dockerfile
-    container_name: coachqa-backend
+    container_name: qenabler-backend
     environment:
       NODE_ENV: production
       PORT: 9002
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_NAME: coachqa_db
+      DB_NAME: qenabler_db
       DB_USER: postgres
       DB_PASSWORD: postgres
       JWT_SECRET: ${JWT_SECRET:-your-secret-key-change-in-production}
@@ -47,20 +47,22 @@ services:
     ports:
       - "9002:9002"
     volumes:
-      - ./coachqa-backend/logs:/app/logs
+      - ./qenabler-backend/logs:/app/logs
+      - ./qenabler-backend/ensure-database.js:/app/ensure-database.js
     depends_on:
       postgres:
         condition: service_healthy
     networks:
-      - coachqa-network
+      - qenabler-network
     restart: unless-stopped
+    command: sh -c "node ensure-database.js && npm start"
 
   # Frontend UI Service
   frontend:
     build:
-      context: ./coachqa-ui
+      context: ./qenabler-ui
       dockerfile: Dockerfile
-    container_name: coachqa-frontend
+    container_name: qenabler-frontend
     environment:
       VITE_API_URL: http://127.0.0.1:9002
     ports:
@@ -68,15 +70,15 @@ services:
     depends_on:
       - backend
     networks:
-      - coachqa-network
+      - qenabler-network
     restart: unless-stopped
 
   # Swagger UI Service - Port 9004
   swagger-ui:
     build:
-      context: ./coachqa-swagger-ui
+      context: ./qenabler-swagger-ui
       dockerfile: Dockerfile
-    container_name: coachqa-swagger-ui
+    container_name: qenabler-swagger-ui
     environment:
       PORT: 9004
       BACKEND_URL: http://backend:9002
@@ -86,7 +88,7 @@ services:
     depends_on:
       - backend
     networks:
-      - coachqa-network
+      - qenabler-network
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:9004/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
@@ -98,13 +100,13 @@ services:
   # Documentation Service (Docusaurus) - Port 9003
   docs:
     build:
-      context: ./coachqa-docs
+      context: ./qenabler-docs
       dockerfile: Dockerfile
-    container_name: coachqa-docs
+    container_name: qenabler-docs
     ports:
       - "9003:80"
     networks:
-      - coachqa-network
+      - qenabler-network
     restart: unless-stopped
 
 volumes:
@@ -112,6 +114,6 @@ volumes:
     driver: local
 
 networks:
-  coachqa-network:
+  qenabler-network:
     driver: bridge
 

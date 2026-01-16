@@ -9,7 +9,7 @@ Subscription-based feature gating has been implemented to restrict feature acces
 ### Backend Implementation
 
 #### 1. Subscription Plan Configuration
-**File:** `coachqa-backend/src/subscription/planConfig.ts`
+**File:** `QEnabler-backend/src/subscription/planConfig.ts`
 
 - Defines three subscription plans: Starter, Growth, Enterprise
 - Maps each plan to its allowed features based on the comparison table
@@ -18,7 +18,7 @@ Subscription-based feature gating has been implemented to restrict feature acces
   - `planHasFeature()` - Checks if a plan has access to a specific feature
 
 #### 2. Subscription Service
-**File:** `coachqa-backend/src/services/subscription.service.ts`
+**File:** `QEnabler-backend/src/services/subscription.service.ts`
 
 - `getAllSubscriptionPlans()` - Lists all active subscription plans
 - `getSubscriptionPlanByCode()` - Gets plan by code
@@ -26,7 +26,7 @@ Subscription-based feature gating has been implemented to restrict feature acces
 - `seedSubscriptionPlans()` - Seeds Starter, Growth, Enterprise plans in database
 
 #### 3. Subscription Controller
-**File:** `coachqa-backend/src/controllers/subscription.controller.ts`
+**File:** `QEnabler-backend/src/controllers/subscription.controller.ts`
 
 - `getAllSubscriptionPlans()` - API endpoint to list plans
 - `seedSubscriptionPlans()` - API endpoint to seed plans
@@ -35,7 +35,7 @@ Subscription-based feature gating has been implemented to restrict feature acces
 - `requireFeature()` - Middleware to guard routes by subscription feature
 
 #### 4. Tenant Model Updates
-**File:** `coachqa-backend/src/models/Tenant.ts`
+**File:** `QEnabler-backend/src/models/Tenant.ts`
 
 - Uncommented subscription fields:
   - `subscriptionPlanId` - Foreign key to subscription_plans table
@@ -44,20 +44,20 @@ Subscription-based feature gating has been implemented to restrict feature acces
   - `subscriptionEndDate` - When subscription ends
 
 #### 5. Tenant Controller Updates
-**File:** `coachqa-backend/src/controllers/tenant.controller.ts`
+**File:** `QEnabler-backend/src/controllers/tenant.controller.ts`
 
 - `getCurrentTenant()` - Now includes `subscriptionPlanCode` and `subscriptionPlan` in response
 
 #### 6. Auth Service Updates
-**File:** `coachqa-backend/src/services/auth.service.ts`
+**File:** `QEnabler-backend/src/services/auth.service.ts`
 
 - `registerTenant()` - New tenants default to Starter plan
 - Automatically seeds plans if they don't exist
 
 #### 7. Route Guards
 **Files:** 
-- `coachqa-backend/src/routes/test-debt.routes.ts`
-- `coachqa-backend/src/routes/change-tracker.routes.ts`
+- `QEnabler-backend/src/routes/test-debt.routes.ts`
+- `QEnabler-backend/src/routes/change-tracker.routes.ts`
 
 - Added `requireFeature()` middleware to protect routes:
   - Test Debt Register routes require `test_debt_register` feature
@@ -65,19 +65,19 @@ Subscription-based feature gating has been implemented to restrict feature acces
 
 #### 8. API Routes
 **Files:**
-- `coachqa-backend/src/routes/tenant.routes.ts` - Added `/api/tenants/subscription/entitlements`
-- `coachqa-backend/src/routes/platformAdmin.routes.ts` - Added subscription management routes
+- `QEnabler-backend/src/routes/tenant.routes.ts` - Added `/api/tenants/subscription/entitlements`
+- `QEnabler-backend/src/routes/platformAdmin.routes.ts` - Added subscription management routes
 
 ### Frontend Implementation
 
 #### 1. Subscription Plan Configuration
-**File:** `coachqa-ui/src/subscription/planConfig.ts`
+**File:** `QEnabler-ui/src/subscription/planConfig.ts`
 
 - Frontend mirror of backend plan configuration
 - Ensures consistency between frontend and backend
 
 #### 2. Subscription Context
-**File:** `coachqa-ui/src/subscription/SubscriptionContext.tsx`
+**File:** `QEnabler-ui/src/subscription/SubscriptionContext.tsx`
 
 - `SubscriptionProvider` - React context provider
 - `useSubscription()` - Hook to access subscription data
@@ -85,21 +85,21 @@ Subscription-based feature gating has been implemented to restrict feature acces
 - Provides `hasFeature()` method to check feature access
 
 #### 3. Feature Gate Component
-**File:** `coachqa-ui/src/subscription/FeatureGate.tsx`
+**File:** `QEnabler-ui/src/subscription/FeatureGate.tsx`
 
 - Wraps protected content
 - Shows upsell message if feature is not available
 - Displays current plan and required plan tier
 
 #### 4. Navigation Gating
-**File:** `coachqa-ui/src/layouts/tenant/Sidebar.tsx`
+**File:** `QEnabler-ui/src/layouts/tenant/Sidebar.tsx`
 
 - Filters menu items based on subscription features
 - Maps menu paths to subscription feature keys
 - Hides Growth/Enterprise-only features from Starter users
 
 #### 5. Page-Level Gating
-**File:** `coachqa-ui/src/App.tsx`
+**File:** `QEnabler-ui/src/App.tsx`
 
 - Wrapped key routes with `FeatureGate`:
   - `/dashboard/squads` - Requires `squad_management` (Growth+)
@@ -109,7 +109,7 @@ Subscription-based feature gating has been implemented to restrict feature acces
   - `/dashboard/career-framework` - Requires `career_framework` (Enterprise)
 
 #### 6. Platform Admin Subscription Management
-**File:** `coachqa-ui/src/pages/platform-admin/TenantDetails.tsx`
+**File:** `QEnabler-ui/src/pages/platform-admin/TenantDetails.tsx`
 
 - Added "Subscription" tab
 - Shows current subscription plan
@@ -117,7 +117,7 @@ Subscription-based feature gating has been implemented to restrict feature acces
 - Table showing all available plans with pricing
 
 #### 7. API Utilities
-**File:** `coachqa-ui/src/utils/api.ts`
+**File:** `QEnabler-ui/src/utils/api.ts`
 
 - `fetchSubscriptionEntitlements()` - Fetches tenant's subscription entitlements
 - `fetchSubscriptionPlans()` - Lists all subscription plans

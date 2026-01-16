@@ -13,7 +13,7 @@
 
 ## Overview
 
-The CoachQA platform implements a comprehensive Role-Based Access Control (RBAC) system that allows platform administrators to manage roles and permissions for both global (system-wide) and tenant-specific access control.
+The QEnabler platform implements a comprehensive Role-Based Access Control (RBAC) system that allows platform administrators to manage roles and permissions for both global (system-wide) and tenant-specific access control.
 
 ### Key Features
 
@@ -332,7 +332,7 @@ Authorization: Bearer <access_token>
 - Delete roles (system roles cannot be deleted)
 - Display role type (System/Custom) and tenant association
 
-**Component:** `coachqa-ui/src/pages/platform-admin/RoleManagement.tsx`
+**Component:** `QEnabler-ui/src/pages/platform-admin/RoleManagement.tsx`
 
 #### 2. Tenant Details - Roles Tab
 **Path:** `/admin/tenants/:tenantId`
@@ -344,7 +344,7 @@ Authorization: Bearer <access_token>
 - Delete tenant roles
 - See user count per role
 
-**Component:** `coachqa-ui/src/pages/platform-admin/TenantDetails.tsx`
+**Component:** `QEnabler-ui/src/pages/platform-admin/TenantDetails.tsx`
 
 #### 3. Tenant Details - Role Permissions Tab
 **Path:** `/admin/tenants/:tenantId` (Role Permissions tab)
@@ -359,7 +359,7 @@ Authorization: Bearer <access_token>
 
 ### API Functions
 
-**File:** `coachqa-ui/src/utils/api.ts`
+**File:** `QEnabler-ui/src/utils/api.ts`
 
 ```typescript
 // Get all roles

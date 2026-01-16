@@ -1,11 +1,11 @@
 {
-    "name": "coachqa",
+    "name": "qenabler",
     "private": true,
     "scripts": {
-        "dev": "concurrently -k -n BACKEND,UI,SWAGGER -c blue,green,yellow \"npm run dev --prefix coachqa-backend\" \"npm run dev --prefix coachqa-ui\" \"npm run dev --prefix coachqa-swagger-ui\"",
-        "build": "concurrently \"npm run build --prefix coachqa-backend\" \"npm run build --prefix coachqa-ui\" \"npm run build --prefix coachqa-swagger-ui\"",
-        "lint": "concurrently \"npm run lint --prefix coachqa-backend\" \"npm run lint --prefix coachqa-ui\"",
-        "swagger-ui": "npm run dev --prefix coachqa-swagger-ui",
+        "dev": "concurrently -k -n BACKEND,UI,SWAGGER -c blue,green,yellow \"npm run dev --prefix qenabler-backend\" \"npm run dev --prefix qenabler-ui\" \"npm run dev --prefix qenabler-swagger-ui\"",
+        "build": "concurrently \"npm run build --prefix qenabler-backend\" \"npm run build --prefix qenabler-ui\" \"npm run build --prefix qenabler-swagger-ui\"",
+        "lint": "concurrently \"npm run lint --prefix qenabler-backend\" \"npm run lint --prefix qenabler-ui\"",
+        "swagger-ui": "npm run dev --prefix qenabler-swagger-ui",
         "swagger": "npm run swagger-ui",
         "swagger:open": "start http://127.0.0.1:9004",
         "docs": "start http://127.0.0.1:9003",

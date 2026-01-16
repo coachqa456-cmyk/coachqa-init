@@ -1,6 +1,6 @@
 ## Platform Admin Capabilities Overview
 
-This document summarizes what is currently implemented and working in the **Platform Admin** area of CoachQA.
+This document summarizes what is currently implemented and working in the **Platform Admin** area of QEnabler.
 
 Platform Admin routes live under `/admin` and use a separate authentication flow and token storage from tenant users.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Maturity levels in CoachQA are implemented as **global/shared** entities that are used across all tenants, but managed differently depending on the context (tenant user vs platform admin).
+Maturity levels in QEnabler are implemented as **global/shared** entities that are used across all tenants, but managed differently depending on the context (tenant user vs platform admin).
 
 ## Architecture
 
@@ -30,7 +30,7 @@ CREATE TABLE maturity_levels (
 
 ### Backend Implementation
 
-#### Routes (`coachqa-backend/src/routes/maturity.routes.ts`)
+#### Routes (`QEnabler-backend/src/routes/maturity.routes.ts`)
 
 All maturity level routes use:
 - `authenticate` middleware - requires authentication
@@ -48,7 +48,7 @@ router.put('/levels/:id', maturityController.updateMaturityLevel);
 router.delete('/levels/:id', maturityController.deleteMaturityLevel);
 ```
 
-#### Service Layer (`coachqa-backend/src/services/maturity.service.ts`)
+#### Service Layer (`QEnabler-backend/src/services/maturity.service.ts`)
 
 **Key Functions:**
 
@@ -72,7 +72,7 @@ router.delete('/levels/:id', maturityController.deleteMaturityLevel);
    - **Prevents deletion** if any assessments reference it
    - Checks `MaturityAssessment` table for references
 
-#### Controller Layer (`coachqa-backend/src/controllers/maturity.controller.ts`)
+#### Controller Layer (`QEnabler-backend/src/controllers/maturity.controller.ts`)
 
 All controllers are accessible to **authenticated tenant users**:
 - No special platform admin check
@@ -84,7 +84,7 @@ All controllers are accessible to **authenticated tenant users**:
 
 #### 1. **Maturity Ladder Page** (`/dashboard/maturity-ladder`)
 
-**File:** `coachqa-ui/src/pages/maturity-ladder/MaturityLadder.tsx`
+**File:** `QEnabler-ui/src/pages/maturity-ladder/MaturityLadder.tsx`
 
 **Purpose:** View and create maturity assessments for squads
 
@@ -106,7 +106,7 @@ apiCall<MaturityAssessment | null>(fetchCurrentSquadMaturity(selectedSquadId))
 
 #### 2. **Maturity Level Management Page** (`/dashboard/maturity-levels`)
 
-**File:** `coachqa-ui/src/pages/maturity-levels/MaturityLevelManagement.tsx` (if exists)
+**File:** `QEnabler-ui/src/pages/maturity-levels/MaturityLevelManagement.tsx` (if exists)
 
 **Note:** Based on `App.tsx`, this route exists but the file may not be implemented yet.
 
@@ -119,7 +119,7 @@ apiCall<MaturityAssessment | null>(fetchCurrentSquadMaturity(selectedSquadId))
 
 #### **Tenant Details Page** (`/admin/tenants/:tenantId`)
 
-**File:** `coachqa-ui/src/pages/platform-admin/TenantDetails.tsx`
+**File:** `QEnabler-ui/src/pages/platform-admin/TenantDetails.tsx`
 
 **Tab:** "Maturity Levels" (Tab index 4)
 

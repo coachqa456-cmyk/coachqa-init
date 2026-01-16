@@ -18,7 +18,7 @@ The Role & Permission Master implements RBAC for **tenant users**:
 ### `permissions` (master catalog)
 
 - **Table**: `permissions`
-- **Model**: `Permission` (`coachqa-backend/src/models/Permission.ts`)
+- **Model**: `Permission` (`QEnabler-backend/src/models/Permission.ts`)
 - **Fields**:
   - `id: UUID`
   - `code: string` (unique, e.g. `coaching.view`)
@@ -32,7 +32,7 @@ The Role & Permission Master implements RBAC for **tenant users**:
 ### `roles`
 
 - **Table**: `roles`
-- **Model**: `Role` (`coachqa-backend/src/models/Role.ts`)
+- **Model**: `Role` (`QEnabler-backend/src/models/Role.ts`)
 - **Fields**:
   - `id: UUID`
   - `tenantId?: UUID | null`  
@@ -52,7 +52,7 @@ The Role & Permission Master implements RBAC for **tenant users**:
 
 ### `users.roleId`
 
-- **Model**: `User` (`coachqa-backend/src/models/User.ts`)
+- **Model**: `User` (`QEnabler-backend/src/models/User.ts`)
 - Added fields/associations:
   - `roleId?: UUID | null` → FK to `roles.id`
   - `User.belongsTo(Role, { as: 'roleEntity' })`
@@ -63,7 +63,7 @@ The Role & Permission Master implements RBAC for **tenant users**:
 
 ## Types & Permissions
 
-### Core Types (`coachqa-backend/src/types/index.ts`)
+### Core Types (`QEnabler-backend/src/types/index.ts`)
 
 **User type**:
 
@@ -198,16 +198,16 @@ These system roles are **global** (`tenant_id = NULL`) and marked `is_system_rol
 
 ### Services
 
-- `coachqa-backend/src/services/role.service.ts`
+- `QEnabler-backend/src/services/role.service.ts`
   - Role CRUD (system + tenant)
   - Manage `permissions` JSON per role
-- `coachqa-backend/src/services/permission.service.ts`
+- `QEnabler-backend/src/services/permission.service.ts`
   - Read-only catalog of all permissions
 
 ### Controllers & Routes
 
-- `coachqa-backend/src/controllers/role.controller.ts`
-- `coachqa-backend/src/routes/role.routes.ts`:
+- `QEnabler-backend/src/controllers/role.controller.ts`
+- `QEnabler-backend/src/routes/role.routes.ts`:
   - `GET /api/roles` – list roles for current tenant (plus system roles)
   - `POST /api/roles` – create tenant role
   - `PUT /api/roles/:id` / `DELETE /api/roles/:id`
@@ -217,7 +217,7 @@ These system roles are **global** (`tenant_id = NULL`) and marked `is_system_rol
 
 ### Middleware
 
-- `coachqa-backend/src/middleware/permission.ts`:
+- `QEnabler-backend/src/middleware/permission.ts`:
   - `requirePermission(code: PermissionCode)`
   - `requireAnyPermission(codes: PermissionCode[])`
   - `requireAllPermissions(codes: PermissionCode[])`
@@ -228,7 +228,7 @@ These system roles are **global** (`tenant_id = NULL`) and marked `is_system_rol
 
 ### Auth Middleware Integration
 
-- `coachqa-backend/src/middleware/auth.ts` currently attaches:
+- `QEnabler-backend/src/middleware/auth.ts` currently attaches:
   - `req.user`, `req.tenantId`, `req.isPlatformAdmin`
 - It will be extended to:
   - Load `Role` for `user.roleId` (or map `UserRole` to system `Role`).
@@ -240,26 +240,26 @@ These system roles are **global** (`tenant_id = NULL`) and marked `is_system_rol
 
 ### API Client
 
-- `coachqa-ui/src/services/roleApi.ts`:
+- `QEnabler-ui/src/services/roleApi.ts`:
   - Wraps `/api/roles` and `/api/permissions` endpoints.
 
 ### Tenant Admin Role Management (`/dashboard/roles`)
 
-- `coachqa-ui/src/pages/role-management/RoleManagement.tsx`:
+- `QEnabler-ui/src/pages/role-management/RoleManagement.tsx`:
   - List system + tenant roles.
   - Create/update/delete tenant-specific roles.
   - Permission matrix editor (roles × permissions).
 
 ### Platform Admin Role Master (`/admin/roles`)
 
-- `coachqa-ui/src/pages/platform-admin/RolePermissionMaster.tsx`:
+- `QEnabler-ui/src/pages/platform-admin/RolePermissionMaster.tsx`:
   - View/edit **system roles** and their permissions.
   - View how tenants are using roles (future extension).
 
 ### User Management Integration
 
-- `coachqa-ui/src/pages/users/UserManagement.tsx`
-- `coachqa-ui/src/pages/platform-admin/AdminUserManagement.tsx`
+- `QEnabler-ui/src/pages/users/UserManagement.tsx`
+- `QEnabler-ui/src/pages/platform-admin/AdminUserManagement.tsx`
   - Role dropdown based on `/api/roles`.
   - Display user’s main permissions summary (optional).
 

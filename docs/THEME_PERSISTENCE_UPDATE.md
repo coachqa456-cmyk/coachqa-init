@@ -8,7 +8,7 @@ Enhanced the theme system to persist tenant-specific themes in both **localStora
 
 ### 1. Enhanced ThemeContext ✅
 
-**File:** `coachqa-ui/src/contexts/ThemeContext.tsx`
+**File:** `QEnabler-ui/src/contexts/ThemeContext.tsx`
 
 #### New Features:
 - **localStorage Caching**: Theme configuration cached locally for instant loading
@@ -32,7 +32,7 @@ Enhanced the theme system to persist tenant-specific themes in both **localStora
 
 ### 2. Tenant Settings Page ✅
 
-**File:** `coachqa-ui/src/pages/settings/TenantSettings.tsx`
+**File:** `QEnabler-ui/src/pages/settings/TenantSettings.tsx`
 
 A comprehensive settings page where tenant admins can:
 - **Update theme colors** with live preview
@@ -53,7 +53,7 @@ A comprehensive settings page where tenant admins can:
 
 ### 3. Route Addition ✅
 
-**File:** `coachqa-ui/src/App.tsx`
+**File:** `QEnabler-ui/src/App.tsx`
 
 Added route: `/dashboard/settings` → `TenantSettings` page
 - Protected by RoleProtectedRoute
@@ -384,9 +384,9 @@ Potential improvements:
 
 ## Files Modified
 
-1. `coachqa-ui/src/contexts/ThemeContext.tsx` - Enhanced with persistence
-2. `coachqa-ui/src/pages/settings/TenantSettings.tsx` - New settings page
-3. `coachqa-ui/src/App.tsx` - Added settings route
+1. `QEnabler-ui/src/contexts/ThemeContext.tsx` - Enhanced with persistence
+2. `QEnabler-ui/src/pages/settings/TenantSettings.tsx` - New settings page
+3. `QEnabler-ui/src/App.tsx` - Added settings route
 
 ## Summary
 
@@ -404,7 +404,7 @@ Users can now customize their theme once and have it persist forever, across all
 
 **Version:** 2.0  
 **Date:** January 4, 2026  
-**Author:** CoachQA Development Team
+**Author:** QEnabler Development Team
 
 
 

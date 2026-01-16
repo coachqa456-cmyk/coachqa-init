@@ -1,7 +1,7 @@
-docker exec -it coachqa-frontend-dev sh
-docker exec -it coachqa-backend-dev sh
-docker exec -it coachqa-postgres-dev sh
-docker exec -it coachqa-postgres-dev psql -U postgres
+docker exec -it qenabler-frontend-dev sh
+docker exec -it qenabler-backend-dev sh
+docker exec -it qenabler-postgres-dev sh
+docker exec -it qenabler-postgres-dev psql -U postgres
 
 
 Tenant - Login
@@ -10,5 +10,5 @@ user@demo.com
 Demo@123
 
 
-docker restart coachqa-frontend-dev
-docker restart coachqa-backend-dev
+docker restart qenabler-frontend-dev
+docker restart qenabler-backend-dev

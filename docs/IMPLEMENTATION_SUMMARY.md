@@ -16,37 +16,37 @@ Successfully implemented tenant-specific theme configuration that allows each te
 ### 2. Backend (Node.js/TypeScript) ✅
 
 #### Models
-- **Tenant Model** (`coachqa-backend/src/models/Tenant.ts`)
+- **Tenant Model** (`QEnabler-backend/src/models/Tenant.ts`)
   - Added `ThemeConfig` interface
   - Added theme-related fields to TenantAttributes
   - Updated model initialization with new columns
   - Exported ThemeConfig type
 
 #### Controllers
-- **Platform Admin Controller** (`coachqa-backend/src/controllers/platformAdmin.controller.ts`)
+- **Platform Admin Controller** (`QEnabler-backend/src/controllers/platformAdmin.controller.ts`)
   - Updated `createTenant` to accept theme configuration
   - Updated `updateTenantById` to handle theme updates
 
-- **Tenant Controller** (`coachqa-backend/src/controllers/tenant.controller.ts`)
+- **Tenant Controller** (`QEnabler-backend/src/controllers/tenant.controller.ts`)
   - Updated `getCurrentTenant` to return theme configuration
   - Updated `updateTenant` to handle theme updates
   - Added `getTenantTheme` endpoint for theme-only fetching
 
 #### Routes
-- **Tenant Routes** (`coachqa-backend/src/routes/tenant.routes.ts`)
+- **Tenant Routes** (`QEnabler-backend/src/routes/tenant.routes.ts`)
   - Added `GET /api/tenants/me/theme` endpoint with Swagger documentation
 
 ### 3. Frontend (React/TypeScript) ✅
 
 #### API Utilities
-- **API Utils** (`coachqa-ui/src/utils/api.ts`)
+- **API Utils** (`QEnabler-ui/src/utils/api.ts`)
   - Added `ThemeConfig` interface
   - Updated `PlatformTenantPayload` to include theme fields
   - Added `fetchTenantTheme()` function
   - Updated `updateCurrentTenant()` to support theme updates
 
 #### Theme Context
-- **Theme Context** (`coachqa-ui/src/contexts/ThemeContext.tsx`)
+- **Theme Context** (`QEnabler-ui/src/contexts/ThemeContext.tsx`)
   - Enhanced to fetch tenant-specific themes
   - Added `tenantTheme` state
   - Added `refreshTenantTheme()` function
@@ -54,12 +54,12 @@ Successfully implemented tenant-specific theme configuration that allows each te
   - Auto-loads theme on route changes
 
 #### UI Components
-- **Theme Preview** (`coachqa-ui/src/components/theme/ThemePreview.tsx`)
+- **Theme Preview** (`QEnabler-ui/src/components/theme/ThemePreview.tsx`)
   - Visual preview component showing color swatches
   - Sample buttons and chips
   - Company branding display
 
-- **Theme Customizer** (`coachqa-ui/src/components/theme/ThemeCustomizer.tsx`)
+- **Theme Customizer** (`QEnabler-ui/src/components/theme/ThemeCustomizer.tsx`)
   - Interactive theme editor
   - 5 pre-built theme templates (Default, Purple, Green, Orange, Red)
   - Advanced color picker for fine-tuning
@@ -67,7 +67,7 @@ Successfully implemented tenant-specific theme configuration that allows each te
   - Accordion-based advanced customization
 
 #### Pages
-- **Tenant Management** (`coachqa-ui/src/pages/platform-admin/TenantManagement.tsx`)
+- **Tenant Management** (`QEnabler-ui/src/pages/platform-admin/TenantManagement.tsx`)
   - Added theme configuration to tenant creation dialog
   - Implemented tabbed interface (Basic Info + Theme & Branding)
   - Added company information fields
@@ -141,18 +141,18 @@ const { tenantTheme, refreshTenantTheme } = useTheme();
 ## 📁 Files Modified
 
 ### Backend (5 files)
-1. `coachqa-backend/migrations/016-add-tenant-theme-config.sql` (NEW)
-2. `coachqa-backend/src/models/Tenant.ts`
-3. `coachqa-backend/src/controllers/platformAdmin.controller.ts`
-4. `coachqa-backend/src/controllers/tenant.controller.ts`
-5. `coachqa-backend/src/routes/tenant.routes.ts`
+1. `QEnabler-backend/migrations/016-add-tenant-theme-config.sql` (NEW)
+2. `QEnabler-backend/src/models/Tenant.ts`
+3. `QEnabler-backend/src/controllers/platformAdmin.controller.ts`
+4. `QEnabler-backend/src/controllers/tenant.controller.ts`
+5. `QEnabler-backend/src/routes/tenant.routes.ts`
 
 ### Frontend (6 files)
-1. `coachqa-ui/src/contexts/ThemeContext.tsx`
-2. `coachqa-ui/src/utils/api.ts`
-3. `coachqa-ui/src/components/theme/ThemePreview.tsx` (NEW)
-4. `coachqa-ui/src/components/theme/ThemeCustomizer.tsx` (NEW)
-5. `coachqa-ui/src/pages/platform-admin/TenantManagement.tsx`
+1. `QEnabler-ui/src/contexts/ThemeContext.tsx`
+2. `QEnabler-ui/src/utils/api.ts`
+3. `QEnabler-ui/src/components/theme/ThemePreview.tsx` (NEW)
+4. `QEnabler-ui/src/components/theme/ThemeCustomizer.tsx` (NEW)
+5. `QEnabler-ui/src/pages/platform-admin/TenantManagement.tsx`
 
 ### Documentation (2 files)
 1. `TENANT_THEME_CONFIGURATION.md` (NEW)
@@ -165,21 +165,21 @@ const { tenantTheme, refreshTenantTheme } = useTheme();
 ### 1. Apply Database Migration
 
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 psql -U your_username -d your_database -f migrations/016-add-tenant-theme-config.sql
 ```
 
 ### 2. Restart Backend Server
 
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 npm run dev
 ```
 
 ### 3. Restart Frontend Server
 
 ```bash
-cd coachqa-ui
+cd QEnabler-ui
 npm run dev
 ```
 

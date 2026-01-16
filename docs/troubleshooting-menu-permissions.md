@@ -16,7 +16,7 @@
 
 1. **Verify Backend Server is Running:**
    ```bash
-   cd coachqa-backend
+   cd QEnabler-backend
    npm run dev
    ```
    Check console for: `Server is running on port 9000`
@@ -147,7 +147,7 @@
 1. **Run Migration Manually:**
    ```bash
    # Connect to database
-   psql -U postgres -d coachqa_db
+   psql -U postgres -d QEnabler_db
    
    # Run migration
    \i migrations/005-add-menu-permissions.sql
@@ -267,7 +267,7 @@ sessionStorage.clear();
 ```bash
 # Stop server (Ctrl+C)
 # Then restart
-cd coachqa-backend
+cd QEnabler-backend
 npm run dev
 ```
 

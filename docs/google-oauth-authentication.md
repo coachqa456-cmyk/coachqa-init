@@ -1,6 +1,6 @@
 # Google OAuth Authentication
 
-This document describes the Google OAuth authentication implementation for the CoachQA platform.
+This document describes the Google OAuth authentication implementation for the QEnabler platform.
 
 ## Overview
 
@@ -319,7 +319,7 @@ const { email, name, picture } = payload;
 
 Complete API documentation is available in Swagger UI at:
 - **Development:** `http://localhost:9002/api-docs`
-- **Production:** `https://api.coachqa.com/api-docs`
+- **Production:** `https://api.QEnabler.com/api-docs`
 
 The Swagger documentation includes:
 - Request/response schemas

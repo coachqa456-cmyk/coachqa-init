@@ -138,11 +138,11 @@ Even if user has only 1 tenant, the process is the same for consistency.
 
 ## 📚 Files Updated
 
-1. `coachqa-backend/src/routes/auth.routes.ts`
+1. `QEnabler-backend/src/routes/auth.routes.ts`
    - Enhanced `/api/auth/login` documentation
    - Enhanced `/api/auth/login-with-tenant` documentation
 
-2. `coachqa-backend/src/config/swagger.ts`
+2. `QEnabler-backend/src/config/swagger.ts`
    - Updated homepage Quick Start guide
 
 3. `SWAGGER_QUICK_START.md`

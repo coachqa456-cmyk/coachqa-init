@@ -7,7 +7,7 @@ The invite user functionality allows admins and managers to send invitations to 
 
 ### 1. Frontend - User Interface
 
-#### Location: `coachqa-ui/src/pages/users/UserManagement.tsx`
+#### Location: `QEnabler-ui/src/pages/users/UserManagement.tsx`
 
 **Invite Button:**
 - **Line 362-363**: "Invite User" button appears on the Users tab
@@ -37,7 +37,7 @@ The invite user functionality allows admins and managers to send invitations to 
 
 ### 2. Frontend - API Call
 
-#### Location: `coachqa-ui/src/utils/api.ts`
+#### Location: `QEnabler-ui/src/utils/api.ts`
 
 **API Function:**
 - **Line 502-503**: `inviteUser()` function
@@ -58,7 +58,7 @@ The invite user functionality allows admins and managers to send invitations to 
 
 ### 3. Backend - API Route
 
-#### Location: `coachqa-backend/src/routes/users.routes.ts`
+#### Location: `QEnabler-backend/src/routes/users.routes.ts`
 
 **Route Definition:**
 - **Line 139**: `POST /api/users/invite`
@@ -70,7 +70,7 @@ The invite user functionality allows admins and managers to send invitations to 
 
 ### 4. Backend - Controller
 
-#### Location: `coachqa-backend/src/controllers/users.controller.ts`
+#### Location: `QEnabler-backend/src/controllers/users.controller.ts`
 
 **Controller Function:**
 - **Lines 128-153**: `inviteUser()` controller
@@ -84,7 +84,7 @@ The invite user functionality allows admins and managers to send invitations to 
 
 ### 5. Backend - Service Layer
 
-#### Location: `coachqa-backend/src/services/user.service.ts`
+#### Location: `QEnabler-backend/src/services/user.service.ts`
 
 **Service Function:**
 - **Lines 160-215**: `inviteUser()` service function
@@ -116,7 +116,7 @@ The invite user functionality allows admins and managers to send invitations to 
 
 ### 6. Backend - Email Service
 
-#### Location: `coachqa-backend/src/services/email.service.ts`
+#### Location: `QEnabler-backend/src/services/email.service.ts`
 
 **Email Function:**
 - **Lines 37-108**: `sendInvitationEmail()` function
@@ -127,7 +127,7 @@ The invite user functionality allows admins and managers to send invitations to 
      - Creates link: `${baseUrl}/accept-invitation/${token}`
 
   2. **Email Content**:
-     - **Subject**: "You have been invited to join {tenantName} on CoachQA"
+     - **Subject**: "You have been invited to join {tenantName} on QEnabler"
      - **Text Body**: Plain text version with invitation link
      - **HTML Body**: Formatted HTML email with button and link
      - **Expiration**: Mentions 7-day expiration
@@ -229,13 +229,13 @@ The invite user functionality allows admins and managers to send invitations to 
 
 | Component | File Path | Key Functionality |
 |-----------|-----------|-------------------|
-| **UI Component** | `coachqa-ui/src/pages/users/UserManagement.tsx` | Invite button, dialog form, form handling |
-| **API Helper** | `coachqa-ui/src/utils/api.ts` | `inviteUser()` function |
-| **API Route** | `coachqa-backend/src/routes/users.routes.ts` | `POST /api/users/invite` route |
-| **Controller** | `coachqa-backend/src/controllers/users.controller.ts` | `inviteUser()` controller |
-| **Service** | `coachqa-backend/src/services/user.service.ts` | `inviteUser()` service logic |
-| **Email Service** | `coachqa-backend/src/services/email.service.ts` | `sendInvitationEmail()` function |
-| **Acceptance Page** | `coachqa-ui/src/pages/auth/AcceptInvitationPage.tsx` | User acceptance form |
+| **UI Component** | `QEnabler-ui/src/pages/users/UserManagement.tsx` | Invite button, dialog form, form handling |
+| **API Helper** | `QEnabler-ui/src/utils/api.ts` | `inviteUser()` function |
+| **API Route** | `QEnabler-backend/src/routes/users.routes.ts` | `POST /api/users/invite` route |
+| **Controller** | `QEnabler-backend/src/controllers/users.controller.ts` | `inviteUser()` controller |
+| **Service** | `QEnabler-backend/src/services/user.service.ts` | `inviteUser()` service logic |
+| **Email Service** | `QEnabler-backend/src/services/email.service.ts` | `sendInvitationEmail()` function |
+| **Acceptance Page** | `QEnabler-ui/src/pages/auth/AcceptInvitationPage.tsx` | User acceptance form |
 
 ## Data Flow
 
@@ -266,7 +266,7 @@ The invite user functionality allows admins and managers to send invitations to 
 
 ### Email Sent
 - **To**: `user@example.com`
-- **Subject**: "You have been invited to join {tenantName} on CoachQA"
+- **Subject**: "You have been invited to join {tenantName} on QEnabler"
 - **Link**: `{APP_URL}/accept-invitation/{token}`
 - **Expiration**: 7 days
 

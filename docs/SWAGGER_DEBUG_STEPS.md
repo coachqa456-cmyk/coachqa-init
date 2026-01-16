@@ -32,7 +32,7 @@ When backend starts, look for:
 ### Step 4: Verify File Paths
 Check if Swagger is scanning the right files:
 ```bash
-# In coachqa-backend directory
+# In QEnabler-backend directory
 ls src/routes/auth.routes.ts  # Should exist
 ```
 
@@ -57,7 +57,7 @@ If this works → Routes are fine, it's just a Swagger display issue.
 4. Hard refresh browser (Ctrl+Shift+R)
 
 ### Fix 2: Check Swagger Config Paths
-In `coachqa-backend/src/config/swagger.ts`:
+In `QEnabler-backend/src/config/swagger.ts`:
 ```typescript
 apis: ['./src/routes/*.ts', './src/controllers/*.ts']
 ```
