@@ -26,3 +26,11 @@ stripe listen --forward-to localhost:9002/api/webhooks/stripe
 stripe trigger checkout.session.completed
 stripe trigger payment_intent.succeeded
 stripe trigger invoice.payment_succeeded
+
+
+Serveur / Host: access-5019307025.webspace-host.com
+Port: 22
+Protocole: SFTP + SSH
+Nom d’utilisateur: su303905
+
+
