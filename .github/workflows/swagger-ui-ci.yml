@@ -1,0 +1,66 @@
+name: Swagger UI CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+    paths:
+      - 'qenabler-swagger-ui/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build and Test Swagger UI
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'qenabler-swagger-ui/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: ./qenabler-swagger-ui
+        run: npm ci
+
+      - name: Build TypeScript
+        working-directory: ./qenabler-swagger-ui
+        run: npm run build
+
+      - name: Check build output
+        working-directory: ./qenabler-swagger-ui
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Build directory not found!"
+            exit 1
+          fi
+          echo "Build successful! Files generated:"
+          find dist -type f
+
+  build-docker:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image (test only)
+        uses: docker/build-push-action@v5
+        with:
+          context: ./qenabler-swagger-ui
+          file: ./qenabler-swagger-ui/Dockerfile
+          push: false
+          tags: qenabler-swagger-ui:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
