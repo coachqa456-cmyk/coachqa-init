@@ -117,7 +117,7 @@ For platform admin endpoints:
 2. Credentials:
 ```json
 {
-  "email": "platform.admin@coachqa.com",
+  "email": "platform.admin@QEnabler.com",
   "password": "SuperSecurePassword123!"
 }
 ```
@@ -323,7 +323,7 @@ For different environments:
 VITE_API_URL=http://127.0.0.1:9002
 
 # Production
-VITE_API_URL=https://api.coachqa.com
+VITE_API_URL=https://api.QEnabler.com
 ```
 
 ## 📖 Additional Resources

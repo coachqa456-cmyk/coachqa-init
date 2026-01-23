@@ -10,7 +10,7 @@
 
 2. **Run the seed script to create test users:**
    ```bash
-   cd coachqa-backend
+   cd QEnabler-backend
    npx ts-node scripts/seed-sample-data.ts
    ```
 
@@ -100,13 +100,13 @@ If you need to create a new user, you can:
 
 1. **Start the backend server:**
    ```bash
-   cd coachqa-backend
+   cd QEnabler-backend
    npm run dev
    ```
 
 2. **Start the frontend:**
    ```bash
-   cd coachqa-ui
+   cd QEnabler-ui
    npm run dev
    ```
 

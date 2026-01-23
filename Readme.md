@@ -1,4 +1,4 @@
-# CoachQA Platform
+# QEnabler Platform
 
 A comprehensive quality assurance and coaching platform for engineering teams.
 
@@ -8,20 +8,20 @@ A comprehensive quality assurance and coaching platform for engineering teams.
 
 ```bash
 # Clone the main project repository
-git clone https://github.com/coachqa456-cmyk/coachqa-init.git CoachQA-Project
-cd CoachQA-Project
+git clone https://github.com/coachqa456-cmyk/coachqa-init.git QEnabler-Project
+cd QEnabler-Project
 
 # Clone backend repository
-git clone https://github.com/coachqa456-cmyk/coachqa-backend.git coachqa-backend
+git clone https://github.com/coachqa456-cmyk/coachqa-backend.git qenabler-backend
 
 # Clone frontend repository
-git clone https://github.com/coachqa456-cmyk/coachqa-ui.git coachqa-ui
+git clone https://github.com/coachqa456-cmyk/coachqa-ui.git qenabler-ui
 
 # Clone Swagger UI repository
-git clone https://github.com/coachqa456-cmyk/coachqa-swagger-ui.git coachqa-swagger-ui
+git clone https://github.com/coachqa456-cmyk/coachqa-swagger-ui.git qenabler-swagger-ui
 
 # Clone documentation repository
-git clone https://github.com/coachqa456-cmyk/coachqa-docs.git coachqa-docs
+git clone https://github.com/coachqa456-cmyk/coachqa-docs.git qenabler-docs
 ```
 
 ### Start Services
@@ -31,7 +31,7 @@ git clone https://github.com/coachqa456-cmyk/coachqa-docs.git coachqa-docs
 docker-compose -f docker-compose.dev.yml up -d
 
 # Wait for database initialization
-docker logs -f coachqa-postgres-dev
+docker logs -f qenabler-postgres-dev
 
 # Access the application
 # Frontend: http://127.0.0.1:9001
@@ -45,10 +45,10 @@ docker logs -f coachqa-postgres-dev
 - **[DATABASE-SETUP.md](DATABASE-SETUP.md)** - Database configuration and setup
 
 ### Database Migrations
-- **[MIGRATION-GUIDE.md](coachqa-backend/migrations/MIGRATION-GUIDE.md)** - Detailed migration guide
-- **[README-COMPLETE-SETUP.md](coachqa-backend/migrations/README-COMPLETE-SETUP.md)** - Complete database setup details
-- **[DOCKER-INIT-SETUP.md](coachqa-backend/migrations/DOCKER-INIT-SETUP.md)** - Docker initialization guide
-- **[QUICK-START.md](coachqa-backend/migrations/QUICK-START.md)** - Quick reference
+- **[MIGRATION-GUIDE.md](qenabler-backend/migrations/MIGRATION-GUIDE.md)** - Detailed migration guide
+- **[README-COMPLETE-SETUP.md](qenabler-backend/migrations/README-COMPLETE-SETUP.md)** - Complete database setup details
+- **[DOCKER-INIT-SETUP.md](qenabler-backend/migrations/DOCKER-INIT-SETUP.md)** - Docker initialization guide
+- **[QUICK-START.md](qenabler-backend/migrations/QUICK-START.md)** - Quick reference
 
 ### Docker Configuration
 - **[docker-compose-setup.md](docker-compose-setup.md)** - Docker Compose configuration details
@@ -57,7 +57,7 @@ docker logs -f coachqa-postgres-dev
 
 ### Platform Admin
 - **URL**: `http://127.0.0.1:9001/admin/login`
-- **Email**: `admin@coachqa.com`
+- **Email**: `admin@qenabler.com`
 - **Password**: `Admin@123`
 
 ### Demo Tenant User
@@ -69,11 +69,11 @@ docker logs -f coachqa-postgres-dev
 
 ### Services
 
-- **Frontend** (`coachqa-ui`) - React/Vite application on port 9001
-- **Backend** (`coachqa-backend`) - Node.js/Express API on port 9002
+- **Frontend** (`qenabler-ui`) - React/Vite application on port 9001
+- **Backend** (`qenabler-backend`) - Node.js/Express API on port 9002
 - **Database** (`postgres`) - PostgreSQL database on port 5432
-- **Swagger UI** (`coachqa-swagger-ui`) - Interactive API documentation on port 9004
-- **Documentation** (`coachqa-docs`) - Docusaurus documentation site on port 9003
+- **Swagger UI** (`qenabler-swagger-ui`) - Interactive API documentation on port 9004
+- **Documentation** (`qenabler-docs`) - Docusaurus documentation site on port 9003
 
 ### Technology Stack
 
@@ -85,15 +85,15 @@ docker logs -f coachqa-postgres-dev
 ## 📁 Project Structure
 
 ```
-CoachQA-Project/
-├── coachqa-backend/          # Backend API
+QEnabler-Project/
+├── qenabler-backend/          # Backend API
 │   ├── src/                  # Source code
 │   ├── migrations/           # Database migrations
 │   └── docs/                 # Backend documentation
-├── coachqa-ui/               # Frontend application
+├── qenabler-ui/               # Frontend application
 │   └── src/                  # Source code
-├── coachqa-swagger-ui/       # Swagger UI service (separate repository)
-├── coachqa-docs/             # Docusaurus documentation (separate repository)
+├── qenabler-swagger-ui/       # Swagger UI service (separate repository)
+├── qenabler-docs/             # Docusaurus documentation (separate repository)
 ├── docker-compose.dev.yml    # Development configuration
 ├── docker-compose.yml        # Production configuration
 └── docs/                     # Project documentation
@@ -114,23 +114,23 @@ If the backend and frontend are in separate repositories:
 
 ```bash
 # Clone backend repository
-git clone https://github.com/coachqa456-cmyk/coachqa-backend.git coachqa-backend
+git clone https://github.com/coachqa456-cmyk/coachqa-backend.git qenabler-backend
 
 # Clone frontend repository
-git clone https://github.com/coachqa456-cmyk/coachqa-ui.git coachqa-ui
+git clone https://github.com/coachqa456-cmyk/coachqa-ui.git qenabler-ui
 
 # Clone Swagger UI repository
-git clone https://github.com/coachqa456-cmyk/coachqa-swagger-ui.git coachqa-swagger-ui
+git clone https://github.com/coachqa456-cmyk/coachqa-swagger-ui.git qenabler-swagger-ui
 
 # Clone documentation repository
-git clone https://github.com/coachqa456-cmyk/coachqa-docs.git coachqa-docs
+git clone https://github.com/coachqa456-cmyk/coachqa-docs.git qenabler-docs
 ```
 
 If using a monorepo, clone the main repository:
 
 ```bash
-git clone <main-repository-url> CoachQA-Project
-cd CoachQA-Project
+git clone <main-repository-url> QEnabler-Project
+cd QEnabler-Project
 ```
 
 ### Common Commands
@@ -154,7 +154,7 @@ docker-compose -f docker-compose.dev.yml up -d postgres
 
 ```bash
 # Connect to database
-docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db
+docker exec -it qenabler-postgres-dev psql -U postgres -d qenabler_db
 
 # Run a migration
 \i /docker-entrypoint-initdb.d/012-add-code-column-to-roles.sql
@@ -174,7 +174,7 @@ docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db
 - `JWT_REFRESH_SECRET` - JWT refresh token secret
 
 #### Database
-- `POSTGRES_DB` - Database name (default: `coachqa_db`)
+- `POSTGRES_DB` - Database name (default: `qenabler_db`)
 - `POSTGRES_USER` - Database user (default: `postgres`)
 - `POSTGRES_PASSWORD` - Database password (default: `postgres`)
 - `USE_COMPLETE_SETUP` - Use complete setup migration (default: `true`)
@@ -195,13 +195,13 @@ docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db
 ### Services Not Starting
 
 1. Check Docker is running: `docker ps`
-2. Check logs: `docker logs coachqa-postgres-dev`
+2. Check logs: `docker logs qenabler-postgres-dev`
 3. Check port conflicts: `netstat -ano | findstr :9001`
 
 ### Database Issues
 
-1. Check initialization: `docker logs coachqa-postgres-dev`
-2. Verify migrations: See [MIGRATION-GUIDE.md](coachqa-backend/migrations/MIGRATION-GUIDE.md)
+1. Check initialization: `docker logs qenabler-postgres-dev`
+2. Verify migrations: See [MIGRATION-GUIDE.md](qenabler-backend/migrations/MIGRATION-GUIDE.md)
 3. Reset database if needed (see Common Commands above)
 
 ### Connection Issues

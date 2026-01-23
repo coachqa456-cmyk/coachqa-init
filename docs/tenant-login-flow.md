@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CoachQA platform uses a **two-step tenant-based login process** that allows users to belong to multiple tenant organizations and select which tenant context they want to work in during login.
+The QEnabler platform uses a **two-step tenant-based login process** that allows users to belong to multiple tenant organizations and select which tenant context they want to work in during login.
 
 ---
 
@@ -25,7 +25,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 1. User Enters Credentials
 
-**Location:** `coachqa-ui/src/pages/public/LoginPage.tsx`
+**Location:** `QEnabler-ui/src/pages/public/LoginPage.tsx`
 
 - User enters **email** and **password** (or uses Google OAuth)
 - Clicks "Sign In" button
@@ -40,7 +40,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 2. Backend Receives Login Request
 
-**Location:** `coachqa-backend/src/routes/auth.routes.ts` → `coachqa-backend/src/controllers/auth.controller.ts`
+**Location:** `QEnabler-backend/src/routes/auth.routes.ts` → `QEnabler-backend/src/controllers/auth.controller.ts`
 
 **Endpoint:** `POST /api/auth/login`
 
@@ -54,7 +54,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 3. Backend Validates Credentials
 
-**Location:** `coachqa-backend/src/services/auth.service.ts` - `login()` function
+**Location:** `QEnabler-backend/src/services/auth.service.ts` - `login()` function
 
 **Process:**
 
@@ -142,7 +142,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 5. Frontend Receives Response
 
-**Location:** `coachqa-ui/src/contexts/AuthContext.tsx` - `login()` function
+**Location:** `QEnabler-ui/src/contexts/AuthContext.tsx` - `login()` function
 
 **Process:**
 
@@ -168,7 +168,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 6. Tenant Selector Page
 
-**Location:** `coachqa-ui/src/pages/public/TenantSelectorPage.tsx`
+**Location:** `QEnabler-ui/src/pages/public/TenantSelectorPage.tsx`
 
 **What User Sees:**
 - List of tenant organizations they belong to
@@ -187,7 +187,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 7. Frontend Sends Tenant Selection
 
-**Location:** `coachqa-ui/src/contexts/AuthContext.tsx` - `loginWithTenant()` function
+**Location:** `QEnabler-ui/src/contexts/AuthContext.tsx` - `loginWithTenant()` function
 
 **API Call:** `POST /api/auth/login-with-tenant`
 
@@ -201,7 +201,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 8. Backend Validates Tenant Access
 
-**Location:** `coachqa-backend/src/services/auth.service.ts` - `loginWithTenant()` function
+**Location:** `QEnabler-backend/src/services/auth.service.ts` - `loginWithTenant()` function
 
 **Process:**
 
@@ -293,7 +293,7 @@ The CoachQA platform uses a **two-step tenant-based login process** that allows 
 
 #### 10. Frontend Stores Tokens and User Data
 
-**Location:** `coachqa-ui/src/contexts/AuthContext.tsx` - `loginWithTenant()` function
+**Location:** `QEnabler-ui/src/contexts/AuthContext.tsx` - `loginWithTenant()` function
 
 **Storage:**
 
@@ -599,23 +599,23 @@ When access token expires:
 ## 📝 Code Locations
 
 ### Frontend
-- **Login Page**: `coachqa-ui/src/pages/public/LoginPage.tsx`
-- **Tenant Selector**: `coachqa-ui/src/pages/public/TenantSelectorPage.tsx`
-- **Auth Context**: `coachqa-ui/src/contexts/AuthContext.tsx`
-- **API Helpers**: `coachqa-ui/src/utils/api.ts`
+- **Login Page**: `QEnabler-ui/src/pages/public/LoginPage.tsx`
+- **Tenant Selector**: `QEnabler-ui/src/pages/public/TenantSelectorPage.tsx`
+- **Auth Context**: `QEnabler-ui/src/contexts/AuthContext.tsx`
+- **API Helpers**: `QEnabler-ui/src/utils/api.ts`
 
 ### Backend
-- **Auth Routes**: `coachqa-backend/src/routes/auth.routes.ts`
-- **Auth Controller**: `coachqa-backend/src/controllers/auth.controller.ts`
-- **Auth Service**: `coachqa-backend/src/services/auth.service.ts`
-- **Token Service**: `coachqa-backend/src/services/token.service.ts`
-- **Auth Middleware**: `coachqa-backend/src/middleware/auth.ts`
+- **Auth Routes**: `QEnabler-backend/src/routes/auth.routes.ts`
+- **Auth Controller**: `QEnabler-backend/src/controllers/auth.controller.ts`
+- **Auth Service**: `QEnabler-backend/src/services/auth.service.ts`
+- **Token Service**: `QEnabler-backend/src/services/token.service.ts`
+- **Auth Middleware**: `QEnabler-backend/src/middleware/auth.ts`
 
 ### Database Models
-- **User Model**: `coachqa-backend/src/models/User.ts`
-- **Tenant Model**: `coachqa-backend/src/models/Tenant.ts`
-- **UserTenant Model**: `coachqa-backend/src/models/UserTenant.ts`
-- **RefreshToken Model**: `coachqa-backend/src/models/RefreshToken.ts`
+- **User Model**: `QEnabler-backend/src/models/User.ts`
+- **Tenant Model**: `QEnabler-backend/src/models/Tenant.ts`
+- **UserTenant Model**: `QEnabler-backend/src/models/UserTenant.ts`
+- **RefreshToken Model**: `QEnabler-backend/src/models/RefreshToken.ts`
 
 ---
 

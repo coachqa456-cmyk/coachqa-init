@@ -1,4 +1,4 @@
-# CoachQA Setup Guide
+# QEnabler Setup Guide
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@
 ### 1. Clone and Navigate
 
 ```bash
-cd "D:\AI Projects\CoachQA-Project"
+cd "D:\AI Projects\QEnabler-Project"
 ```
 
 ### 2. Start Services
@@ -28,7 +28,7 @@ docker-compose up -d
 
 ```bash
 # Watch database initialization
-docker logs -f coachqa-postgres-dev
+docker logs -f QEnabler-postgres-dev
 
 # Wait until you see: "✅ Complete database setup finished!"
 ```
@@ -40,27 +40,27 @@ docker logs -f coachqa-postgres-dev
 docker ps
 
 # Should see:
-# - coachqa-postgres-dev (port 5432)
-# - coachqa-backend-dev (port 9002)
-# - coachqa-frontend-dev (port 9001)
+# - QEnabler-postgres-dev (port 5432)
+# - QEnabler-backend-dev (port 9002)
+# - QEnabler-frontend-dev (port 9001)
 ```
 
 ## Access the Application
 
 ### Frontend
 - **URL**: `http://127.0.0.1:9001` or `http://localhost:9001`
-- **Status**: Check `docker logs coachqa-frontend-dev`
+- **Status**: Check `docker logs QEnabler-frontend-dev`
 
 ### Backend API
 - **URL**: `http://127.0.0.1:9002/api`
 - **Health Check**: `http://127.0.0.1:9002/api/health`
 - **API Docs**: `http://127.0.0.1:9002/api-docs`
-- **Status**: Check `docker logs coachqa-backend-dev`
+- **Status**: Check `docker logs QEnabler-backend-dev`
 
 ### Database
 - **Host**: `127.0.0.1` or `localhost`
 - **Port**: `5432`
-- **Database**: `coachqa_db`
+- **Database**: `QEnabler_db`
 - **User**: `postgres`
 - **Password**: `postgres`
 
@@ -68,7 +68,7 @@ docker ps
 
 ### Platform Admin
 - **URL**: `http://127.0.0.1:9001/admin/login`
-- **Email**: `admin@coachqa.com`
+- **Email**: `admin@QEnabler.com`
 - **Password**: `Admin@123`
 
 ### Demo Tenant User
@@ -94,9 +94,9 @@ docker-compose -f docker-compose.dev.yml down
 docker-compose -f docker-compose.dev.yml logs -f
 
 # Specific service
-docker logs -f coachqa-backend-dev
-docker logs -f coachqa-frontend-dev
-docker logs -f coachqa-postgres-dev
+docker logs -f QEnabler-backend-dev
+docker logs -f QEnabler-frontend-dev
+docker logs -f QEnabler-postgres-dev
 ```
 
 ### Restart Services
@@ -134,19 +134,19 @@ docker-compose -f docker-compose.dev.yml up -d postgres
 
 ### Backend Not Starting
 
-1. Check logs: `docker logs coachqa-backend-dev`
-2. Check database connection: `docker logs coachqa-postgres-dev`
+1. Check logs: `docker logs QEnabler-backend-dev`
+2. Check database connection: `docker logs QEnabler-postgres-dev`
 3. Verify environment variables in `docker-compose.dev.yml`
 
 ### Frontend Not Loading
 
-1. Check logs: `docker logs coachqa-frontend-dev`
+1. Check logs: `docker logs QEnabler-frontend-dev`
 2. Verify API URL: Should be `http://127.0.0.1:9002`
 3. Check browser console for errors
 
 ### Database Issues
 
-1. Check initialization: `docker logs coachqa-postgres-dev`
+1. Check initialization: `docker logs QEnabler-postgres-dev`
 2. Verify migrations ran successfully
 3. Check for duplicate errors (run migration 013 if needed)
 
@@ -166,15 +166,15 @@ If ports 9001, 9002, or 5432 are already in use:
 
 ### Making Code Changes
 
-1. **Backend**: Changes in `coachqa-backend/src/` are automatically reloaded
-2. **Frontend**: Changes in `coachqa-ui/src/` are automatically reloaded
+1. **Backend**: Changes in `QEnabler-backend/src/` are automatically reloaded
+2. **Frontend**: Changes in `QEnabler-ui/src/` are automatically reloaded
 3. **Database**: Changes require migration or database reset
 
 ### Running Migrations
 
 ```bash
 # Connect to database
-docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db
+docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db
 
 # Run migration
 \i /docker-entrypoint-initdb.d/012-add-code-column-to-roles.sql
@@ -190,12 +190,12 @@ npm run create-test-admin -- --email admin@example.com --password password --nam
 ## Project Structure
 
 ```
-CoachQA-Project/
-├── coachqa-backend/          # Backend API (Node.js/Express)
+QEnabler-Project/
+├── QEnabler-backend/          # Backend API (Node.js/Express)
 │   ├── src/                  # Source code
 │   ├── migrations/           # Database migrations
 │   └── Dockerfile.dev       # Development Dockerfile
-├── coachqa-ui/               # Frontend (React/Vite)
+├── QEnabler-ui/               # Frontend (React/Vite)
 │   ├── src/                  # Source code
 │   └── Dockerfile.dev       # Development Dockerfile
 ├── docker-compose.dev.yml    # Development configuration
@@ -214,7 +214,7 @@ CoachQA-Project/
 ## Additional Resources
 
 - **API Documentation**: `http://127.0.0.1:9002/api-docs`
-- **Migration Guide**: `coachqa-backend/migrations/MIGRATION-GUIDE.md`
+- **Migration Guide**: `QEnabler-backend/migrations/MIGRATION-GUIDE.md`
 - **Database Setup**: `DATABASE-SETUP.md`
 - **Docker Setup**: `docker-compose-setup.md`
 

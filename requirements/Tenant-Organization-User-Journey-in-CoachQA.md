@@ -1,12 +1,12 @@
-# Tenant Organization User Journey in CoachQA
+# Tenant Organization User Journey in QEnabler
 
-This document outlines the **complete end-to-end user journey** for a **Tenant Organization** using the CoachQA platform — from initial sign-up to full usage of all Quality Assistance modules.
+This document outlines the **complete end-to-end user journey** for a **Tenant Organization** using the QEnabler platform — from initial sign-up to full usage of all QEnabler modules.
 
 ---
 
 ## 🎯 Overview
 
-In CoachQA, each **tenant** represents an independent organization (e.g., a company or department) with its own isolated:
+In QEnabler, each **tenant** represents an independent organization (e.g., a company or department) with its own isolated:
 
 - Users
 - Squads
@@ -18,7 +18,7 @@ In CoachQA, each **tenant** represents an independent organization (e.g., a comp
 
 ### Steps:
 
-1. Admin visits `https://coachqav2.netlify.app/`
+1. Admin visits `https://QEnablerv2.netlify.app/`
 2. Clicks **"Sign Up as a New Organization"**
 3. Enters:
     - Organization Name
@@ -162,4 +162,4 @@ The tenant journey ensures every organization has:
 - Clear visibility into quality health and coaching impact
 - Full separation from other organizations
 
-CoachQA = Scalable, AI-powered Quality Assistance for orgs of all sizes.
+QEnabler = Scalable, AI-powered quality enablement for orgs of all sizes.

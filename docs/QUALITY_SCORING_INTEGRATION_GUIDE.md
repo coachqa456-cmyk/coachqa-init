@@ -18,7 +18,7 @@ The integration involves:
 First, we need to add a field to store the team's self-rated quality (1-5):
 
 ```typescript
-// coachqa-backend/src/models/QualityScorecard.ts
+// QEnabler-backend/src/models/QualityScorecard.ts
 
 export interface QualityScorecardAttributes {
   id: string;
@@ -62,7 +62,7 @@ selfRatedQuality: {
 Create a utility function similar to the frontend one:
 
 ```typescript
-// coachqa-backend/src/utils/qualityScoring.ts
+// QEnabler-backend/src/utils/qualityScoring.ts
 
 import { QualityScoringConfig } from '../models/Tenant';
 
@@ -107,7 +107,7 @@ export function calculateSelfRatedPoints(
 Update the service to calculate quality score including self-rated quality:
 
 ```typescript
-// coachqa-backend/src/services/scorecard.service.ts
+// QEnabler-backend/src/services/scorecard.service.ts
 
 import Tenant from '../models/Tenant';
 import { calculateSelfRatedPoints } from '../utils/qualityScoring';
@@ -247,7 +247,7 @@ COMMENT ON COLUMN quality_scorecards.self_rated_quality IS 'Team self-rated qual
 ### Step 1: Update API Types
 
 ```typescript
-// coachqa-ui/src/utils/api.ts
+// QEnabler-ui/src/utils/api.ts
 
 export interface QualityScorecard {
   id: string;
@@ -277,7 +277,7 @@ export interface CreateScorecardPayload {
 ### Step 2: Create Scorecard Calculation Hook
 
 ```typescript
-// coachqa-ui/src/hooks/useQualityScorecard.ts
+// QEnabler-ui/src/hooks/useQualityScorecard.ts
 
 import { useState, useEffect } from 'react';
 import { fetchCurrentTenant, QualityScoringConfig } from '../utils/api';
@@ -344,7 +344,7 @@ export function useQualityScorecard() {
 ### Step 3: Update Quality Scorecard Component
 
 ```typescript
-// coachqa-ui/src/pages/quality-scorecard/QualityScorecard.tsx
+// QEnabler-ui/src/pages/quality-scorecard/QualityScorecard.tsx
 
 import { useState, useEffect } from 'react';
 import { useQualityScorecard } from '../../hooks/useQualityScorecard';
@@ -446,7 +446,7 @@ const handleCreateScorecard = async () => {
 ### Backend: Full Scorecard Service with Integration
 
 ```typescript
-// coachqa-backend/src/services/scorecard.service.ts
+// QEnabler-backend/src/services/scorecard.service.ts
 
 import QualityScorecard from '../models/QualityScorecard';
 import Tenant from '../models/Tenant';
@@ -525,7 +525,7 @@ export const createScorecard = async (
 ### Frontend: Complete Component Example
 
 ```typescript
-// coachqa-ui/src/pages/quality-scorecard/CreateScorecardDialog.tsx
+// QEnabler-ui/src/pages/quality-scorecard/CreateScorecardDialog.tsx
 
 import { useState, useEffect } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField, Rating } from '@mui/material';

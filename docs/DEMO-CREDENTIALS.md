@@ -53,7 +53,7 @@ All demo users have the password: **`Demo@123`**
 
 | Email | Password | Use Case |
 |-------|----------|----------|
-| `admin@coachqa.com` | `Admin@123` | Platform administration, tenant management |
+| `admin@qenabler.com` | `Admin@123` | Platform administration, tenant management |
 
 ---
 
@@ -125,7 +125,7 @@ Password: Demo@123
 
 To load demo data, run:
 ```bash
-docker exec -i coachqa-postgres-dev psql -U postgres -d coachqa_db < coachqa-backend/migrations/023-seed-comprehensive-demo-data.sql
+docker exec -i qenabler-postgres-dev psql -U postgres -d qenabler_db < QEnabler-backend/migrations/023-seed-comprehensive-demo-data.sql
 ```
 
 See [DEMO-DATA-GUIDE.md](./DEMO-DATA-GUIDE.md) for detailed instructions.

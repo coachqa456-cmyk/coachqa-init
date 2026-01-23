@@ -45,7 +45,7 @@ User Login Flow:
 
 ### **Step 2: Frontend Makes API Requests**
 
-**Location:** `coachqa-ui/src/utils/api.ts`
+**Location:** `QEnabler-ui/src/utils/api.ts`
 
 **Process:**
 
@@ -76,7 +76,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ### **Step 3: Backend Extracts Tenant Context**
 
-**Location:** `coachqa-backend/src/middleware/auth.ts`
+**Location:** `QEnabler-backend/src/middleware/auth.ts`
 
 **Process:**
 
@@ -103,7 +103,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ### **Step 4: Backend Filters Data by Tenant**
 
-**Location:** `coachqa-backend/src/controllers/dashboard.controller.ts`
+**Location:** `QEnabler-backend/src/controllers/dashboard.controller.ts`
 
 **Controller:**
 ```typescript
@@ -118,7 +118,7 @@ export const getDashboardStats = async (
 };
 ```
 
-**Service Layer:** `coachqa-backend/src/services/dashboard.service.ts`
+**Service Layer:** `QEnabler-backend/src/services/dashboard.service.ts`
 
 **All database queries filter by tenantId:**
 ```typescript
@@ -154,7 +154,7 @@ export const getDashboardStats = async (tenantId: string) => {
 
 ### **Step 5: Frontend Displays Tenant-Specific Data**
 
-**Location:** `coachqa-ui/src/pages/Dashboard.tsx`
+**Location:** `QEnabler-ui/src/pages/Dashboard.tsx`
 
 **Process:**
 
@@ -373,7 +373,7 @@ export const getSomeData = async (tenantId: string) => {
 ### **Frontend: Dashboard Component**
 
 ```typescript
-// coachqa-ui/src/pages/Dashboard.tsx
+// QEnabler-ui/src/pages/Dashboard.tsx
 const Dashboard = () => {
   const { user } = useTenantAuth(); // User has tenantId
   
@@ -401,7 +401,7 @@ const Dashboard = () => {
 ### **Backend: Dashboard Controller**
 
 ```typescript
-// coachqa-backend/src/controllers/dashboard.controller.ts
+// QEnabler-backend/src/controllers/dashboard.controller.ts
 export const getDashboardStats = async (req, res, next) => {
   const tenantId = req.tenantId!; // From token via middleware
   
@@ -415,7 +415,7 @@ export const getDashboardStats = async (req, res, next) => {
 ### **Backend: Dashboard Service**
 
 ```typescript
-// coachqa-backend/src/services/dashboard.service.ts
+// QEnabler-backend/src/services/dashboard.service.ts
 export const getDashboardStats = async (tenantId: string) => {
   // All queries filter by tenantId
   const [coachingSessions, scorecards, squads] = await Promise.all([

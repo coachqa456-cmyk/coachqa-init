@@ -53,13 +53,13 @@ The Test Debt Register currently uses mock data. This plan implements full backe
 
 ## Current State
 
-- Frontend: [`coachqa-ui/src/pages/test-debt/TestDebtRegister.tsx`](coachqa-ui/src/pages/test-debt/TestDebtRegister.tsx) uses mock data
+- Frontend: [`qenabler-ui/src/pages/test-debt/TestDebtRegister.tsx`](qenabler-ui/src/pages/test-debt/TestDebtRegister.tsx) uses mock data
 - Backend: API endpoints exist at `/api/test-debt/items` with full CRUD support
-- Backend model: [`coachqa-backend/src/models/TestDebtItem.ts`](coachqa-backend/src/models/TestDebtItem.ts) includes relationships to Squad, User (assignee/creator)
+- Backend model: [`qenabler-backend/src/models/TestDebtItem.ts`](qenabler-backend/src/models/TestDebtItem.ts) includes relationships to Squad, User (assignee/creator)
 
 ## Implementation Plan
 
-### 1. Add API Functions (`coachqa-ui/src/utils/api.ts`)
+### 1. Add API Functions (`qenabler-ui/src/utils/api.ts`)
 
 Add test debt API functions following the pattern used for coaching sessions:
 
@@ -154,8 +154,8 @@ Map backend enums to frontend display:
 
 ## Files to Modify
 
-1. [`coachqa-ui/src/utils/api.ts`](coachqa-ui/src/utils/api.ts) - Add test debt API functions and types
-2. [`coachqa-ui/src/pages/test-debt/TestDebtRegister.tsx`](coachqa-ui/src/pages/test-debt/TestDebtRegister.tsx) - Complete rewrite to use API calls
+1. [`qenabler-ui/src/utils/api.ts`](qenabler-ui/src/utils/api.ts) - Add test debt API functions and types
+2. [`qenabler-ui/src/pages/test-debt/TestDebtRegister.tsx`](qenabler-ui/src/pages/test-debt/TestDebtRegister.tsx) - Complete rewrite to use API calls
 
 ## Dependencies
 

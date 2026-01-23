@@ -1,4 +1,4 @@
-## Quality Assistance Platform – System Overview
+## QEnabler Platform – System Overview
 
 ### 1. Tech Stack
 
@@ -118,7 +118,7 @@ Most of these module pages are lazy-loaded in `App.tsx` using `React.lazy`, all 
 
 - **Header**: `src/components/layout/Header.tsx`
   - Shows:
-    - Brand logo (`/qa-icon.svg`) and title “Quality Assistance Platform”.
+    - Brand logo (`/qa-icon.svg`) and title “QEnabler Platform”.
     - Theme toggle (Lucide icons for light/dark).
     - Help icon.
     - Notifications icon+badge with a menu of sample notifications.
@@ -158,7 +158,7 @@ Most of these module pages are lazy-loaded in `App.tsx` using `React.lazy`, all 
 
 ### 8. Module Pages (High-level)
 
-Each module under `src/pages/*` represents a functional area of the Quality Assistance platform:
+Each module under `src/pages/*` represents a functional area of the QEnabler Platform:
 
 - **Coaching Tracker**: Tracks coaching sessions and activities.
 - **Quality Scorecard**: Captures & visualizes quality metrics and maturity across squads.
@@ -208,7 +208,7 @@ Most of these are loaded lazily to optimize initial bundle size and perceived pe
 ## 📚 Related Documentation
 
 - **[Requirements Analysis](./requirements-analysis.md)** - Comprehensive analysis of requirements vs. current implementation, gap analysis, and implementation recommendations
-- **[Requirements: Quality Assistance Tool](../requirements/quality-assistance-tool.md)** - Core problem statement and module definitions
-- **[Requirements: Tenant Journey](../requirements/Tenant-Organization-User-Journey-in-CoachQA.md)** - End-to-end tenant organization user journey
+- **[Requirements: QEnabler Tool](../requirements/quality-assistance-tool.md)** - Core problem statement and module definitions
+- **[Requirements: Tenant Journey](../requirements/Tenant-Organization-User-Journey-in-QEnabler.md)** - End-to-end tenant organization user journey
 
 

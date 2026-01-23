@@ -1,7 +1,7 @@
 # Role-Based Access Control Implementation
 
 ## Overview
-This document describes the role-based access control (RBAC) system implemented for the CoachQA application. The system restricts module access and sidebar menu items based on user roles.
+This document describes the role-based access control (RBAC) system implemented for the QEnabler application. The system restricts module access and sidebar menu items based on user roles.
 
 ## User Roles
 The system supports the following tenant user roles:

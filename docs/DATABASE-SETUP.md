@@ -1,4 +1,4 @@
-# CoachQA Database Setup Guide
+# QEnabler Database Setup Guide
 
 ## Quick Start
 
@@ -10,7 +10,7 @@ docker-compose -f docker-compose.dev.yml down -v
 docker-compose -f docker-compose.dev.yml up -d postgres
 
 # Wait for initialization (check logs)
-docker logs -f coachqa-postgres-dev
+docker logs -f QEnabler-postgres-dev
 ```
 
 **Note**: All migrations run automatically on first database initialization, including migration 023 which seeds comprehensive demo data. This means demo data is automatically available after the first setup.
@@ -32,7 +32,7 @@ In `docker-compose.dev.yml`:
 ```yaml
 postgres:
   environment:
-    POSTGRES_DB: coachqa_db
+    POSTGRES_DB: QEnabler_db
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: postgres
     USE_COMPLETE_SETUP: ${USE_COMPLETE_SETUP:-true}  # Use complete setup by default
@@ -42,7 +42,7 @@ postgres:
 
 - **Host**: `localhost` or `127.0.0.1`
 - **Port**: `5432`
-- **Database**: `coachqa_db`
+- **Database**: `QEnabler_db`
 - **User**: `postgres`
 - **Password**: `postgres`
 
@@ -63,7 +63,7 @@ postgres:
 - **System Roles**: 6 roles with appropriate permissions
 - **System Menus**: 13 menu items
 - **Menu Permissions**: Permissions for all system roles
-- **Platform Admin**: admin@coachqa.com / Admin@123
+- **Platform Admin**: admin@QEnabler.com / Admin@123
 - **Demo Tenant**: demo-tenant
 - **Demo User**: user@demo.com / Demo@123
 - **Custom Role**: Custom Team Lead for demo tenant
@@ -85,7 +85,7 @@ postgres:
 
 ### Platform Admin
 
-- **Email**: `admin@coachqa.com`
+- **Email**: `admin@QEnabler.com`
 - **Password**: `Admin@123`
 - **Permissions**: All platform admin permissions enabled
 - **Login URL**: `http://127.0.0.1:9001/admin/login`
@@ -113,32 +113,32 @@ postgres:
 ### Check Database Connection
 
 ```bash
-docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "SELECT version();"
+docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db -c "SELECT version();"
 ```
 
 ### List All Tables
 
 ```bash
-docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "\dt"
+docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db -c "\dt"
 ```
 
 ### Check Roles
 
 ```bash
-docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "SELECT code, name, is_system_role FROM roles ORDER BY is_system_role DESC, name;"
+docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db -c "SELECT code, name, is_system_role FROM roles ORDER BY is_system_role DESC, name;"
 ```
 
 ### Check Platform Admin
 
 ```bash
-docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "SELECT email, name, status FROM platform_admins;"
+docker exec -it QEnabler-postgres-dev psql -U postgres -d QEnabler_db -c "SELECT email, name, status FROM platform_admins;"
 ```
 
 ## Troubleshooting
 
 ### Database Not Initializing
 
-1. **Check logs**: `docker logs coachqa-postgres-dev`
+1. **Check logs**: `docker logs QEnabler-postgres-dev`
 2. **Remove volume**: `docker-compose -f docker-compose.dev.yml down -v`
 3. **Restart**: `docker-compose -f docker-compose.dev.yml up -d postgres`
 
@@ -152,20 +152,20 @@ docker exec -it coachqa-postgres-dev psql -U postgres -d coachqa_db -c "SELECT e
 
 1. **Check container status**: `docker ps`
 2. **Check port**: `netstat -ano | findstr :5432`
-3. **Check logs**: `docker logs coachqa-postgres-dev`
+3. **Check logs**: `docker logs QEnabler-postgres-dev`
 
 ## Maintenance
 
 ### Backup Database
 
 ```bash
-docker exec coachqa-postgres-dev pg_dump -U postgres coachqa_db > backup.sql
+docker exec QEnabler-postgres-dev pg_dump -U postgres QEnabler_db > backup.sql
 ```
 
 ### Restore Database
 
 ```bash
-docker exec -i coachqa-postgres-dev psql -U postgres coachqa_db < backup.sql
+docker exec -i QEnabler-postgres-dev psql -U postgres QEnabler_db < backup.sql
 ```
 
 ### Reset Database
@@ -178,8 +178,8 @@ docker-compose -f docker-compose.dev.yml up -d postgres
 
 ## Related Files
 
-- `coachqa-backend/migrations/000-complete-database-setup.sql` - Complete setup
-- `coachqa-backend/migrations/00-init-database.sh` - Init script
+- `QEnabler-backend/migrations/000-complete-database-setup.sql` - Complete setup
+- `QEnabler-backend/migrations/00-init-database.sh` - Init script
 - `docker-compose.dev.yml` - Docker configuration
-- `coachqa-backend/migrations/MIGRATION-GUIDE.md` - Detailed migration guide
+- `QEnabler-backend/migrations/MIGRATION-GUIDE.md` - Detailed migration guide
 

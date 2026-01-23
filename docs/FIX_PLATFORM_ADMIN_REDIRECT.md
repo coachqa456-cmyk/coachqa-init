@@ -4,7 +4,7 @@
 When a platform admin's session expires (401 Unauthorized), the system was redirecting to the tenant login page (`/login`) instead of the platform admin login page (`/admin/login`).
 
 ## Root Cause
-The `handleUnauthorized` function in `coachqa-ui/src/utils/api.ts` was calling `getUserType()` to determine which login page to redirect to. However, `getUserType()` relies on reading from localStorage, and the function was checking the user type AFTER potentially clearing storage or when storage might already be empty.
+The `handleUnauthorized` function in `QEnabler-ui/src/utils/api.ts` was calling `getUserType()` to determine which login page to redirect to. However, `getUserType()` relies on reading from localStorage, and the function was checking the user type AFTER potentially clearing storage or when storage might already be empty.
 
 The `getUserType()` function uses `getStorageKeys()` which checks the current path, but if the storage was already cleared or the check happened at the wrong time, it could default to tenant storage keys.
 
@@ -17,7 +17,7 @@ Updated `handleUnauthorized` to check the current path (`window.location.pathnam
 
 ## Changes Made
 
-### File: `coachqa-ui/src/utils/api.ts`
+### File: `QEnabler-ui/src/utils/api.ts`
 
 **Before:**
 ```typescript
@@ -99,9 +99,9 @@ To verify the fix works:
 
 ## Related Files
 
-- `coachqa-ui/src/utils/api.ts` - Main fix location
-- `coachqa-ui/src/contexts/AuthContext.tsx` - Logout function (already correct)
-- `coachqa-ui/src/contexts/PlatformAdminAuthContext.tsx` - Platform admin logout (already correct)
+- `QEnabler-ui/src/utils/api.ts` - Main fix location
+- `QEnabler-ui/src/contexts/AuthContext.tsx` - Logout function (already correct)
+- `QEnabler-ui/src/contexts/PlatformAdminAuthContext.tsx` - Platform admin logout (already correct)
 
 ## Notes
 

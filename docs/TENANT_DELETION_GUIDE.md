@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CoachQA platform implements **safe tenant deletion** with validation checks and **automatic cascading deletion** of all related data. This document explains the complete deletion flow, safety measures, and data cleanup process.
+The QEnabler platform implements **safe tenant deletion** with validation checks and **automatic cascading deletion** of all related data. This document explains the complete deletion flow, safety measures, and data cleanup process.
 
 ## 🔒 Safety Measures
 
@@ -251,7 +251,7 @@ DELETE /api/platform-admin/tenants/:tenantId/users/:userId
 
 ### Tenant Management UI
 
-**File:** `coachqa-ui/src/pages/platform-admin/TenantManagement.tsx`
+**File:** `QEnabler-ui/src/pages/platform-admin/TenantManagement.tsx`
 
 **Delete Button:**
 ```tsx
@@ -536,7 +536,7 @@ Potential improvements:
 
 **Version:** 1.0  
 **Last Updated:** January 4, 2026  
-**Author:** CoachQA Development Team
+**Author:** QEnabler Development Team
 
 
 

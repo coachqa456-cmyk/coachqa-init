@@ -8,7 +8,7 @@ This XML-formatted error typically indicates one of the following:
 
 **Check:**
 ```bash
-# In coachqa-backend directory
+# In QEnabler-backend directory
 npm run dev
 ```
 
@@ -41,7 +41,7 @@ console.log(import.meta.env.VITE_API_URL);
 **Verify database is running:**
 ```bash
 # For PostgreSQL
-psql -U postgres -d coachqa_db -c "SELECT 1;"
+psql -U postgres -d QEnabler_db -c "SELECT 1;"
 ```
 
 ### 4. Route Registration Order
@@ -115,14 +115,14 @@ curl -X POST http://localhost:9000/api/auth/login \
 
 **Solution 1: Restart Backend**
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 # Stop current process (Ctrl+C)
 npm run dev
 ```
 
 **Solution 2: Rebuild Backend**
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 npm run build
 npm start
 ```

@@ -1,8 +1,8 @@
-# CoachQA API Integration Guide
+# QEnabler API Integration Guide
 
 ## ✅ Integration Status
 
-The CoachQA frontend (UI) is successfully integrated with the backend API. Both services are running and configured to work together.
+The QEnabler frontend (UI) is successfully integrated with the backend API. Both services are running and configured to work together.
 
 ### Current Setup
 
@@ -219,7 +219,7 @@ import { useAuth } from '@/contexts/AuthContext';
 const { loginPlatformAdmin } = useAuth();
 
 try {
-  await loginPlatformAdmin('admin@coachqa.com', 'password');
+  await loginPlatformAdmin('admin@QEnabler.com', 'password');
   // Admin is redirected to /admin/dashboard
 } catch (error) {
   console.error('Login failed:', error);
@@ -299,7 +299,7 @@ Invoke-RestMethod -Uri "http://localhost:9000/"
 
 **Solution**: Ensure the backend server is running:
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 npm run dev
 ```
 
@@ -334,22 +334,22 @@ npm run dev
 
 1. **Backend:**
    ```bash
-   cd coachqa-backend
+   cd QEnabler-backend
    npm run dev
    # Runs on http://localhost:9000
    ```
 
 2. **Frontend:**
    ```bash
-   cd coachqa-ui
+   cd QEnabler-ui
    npm run dev
    # Runs on http://localhost:9001
    ```
 
 ### Making API Changes
 
-1. Update backend endpoint in `coachqa-backend/src/routes/`
-2. Update API_ENDPOINTS in `coachqa-ui/src/utils/api.ts` if needed
+1. Update backend endpoint in `QEnabler-backend/src/routes/`
+2. Update API_ENDPOINTS in `QEnabler-ui/src/utils/api.ts` if needed
 3. Use the updated endpoint in your React components
 
 ### Adding New API Endpoints
@@ -389,8 +389,8 @@ npm run dev
 ## Support
 
 For issues or questions:
-1. Check the [API Documentation](../coachqa-backend/docs/API.md)
-2. Review the [Backend Architecture](../coachqa-backend/docs/ARCHITECTURE.md)
+1. Check the [API Documentation](../QEnabler-backend/docs/API.md)
+2. Review the [Backend Architecture](../QEnabler-backend/docs/ARCHITECTURE.md)
 3. Test endpoints using the test page at `/test-api.html`
 
 ---

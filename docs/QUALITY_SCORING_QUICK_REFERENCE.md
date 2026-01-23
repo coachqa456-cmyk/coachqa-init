@@ -172,15 +172,15 @@ if (qualityScoringConfig?.enabled) {
 ## Files Created/Modified
 
 ### New Files
-- `coachqa-backend/src/utils/qualityScoring.ts` - Backend utility
-- `coachqa-ui/src/utils/qualityScoring.ts` - Frontend utility
-- `coachqa-ui/src/hooks/useQualityScorecard.ts` - React hook
-- `coachqa-backend/src/services/scorecard.service.example.ts` - Example implementation
+- `QEnabler-backend/src/utils/qualityScoring.ts` - Backend utility
+- `QEnabler-ui/src/utils/qualityScoring.ts` - Frontend utility
+- `QEnabler-ui/src/hooks/useQualityScorecard.ts` - React hook
+- `QEnabler-backend/src/services/scorecard.service.example.ts` - Example implementation
 
 ### Modified Files
-- `coachqa-backend/src/models/QualityScorecard.ts` - Add selfRatedQuality field
-- `coachqa-backend/src/services/scorecard.service.ts` - Integrate calculation
-- `coachqa-ui/src/pages/quality-scorecard/QualityScorecard.tsx` - Add UI components
+- `QEnabler-backend/src/models/QualityScorecard.ts` - Add selfRatedQuality field
+- `QEnabler-backend/src/services/scorecard.service.ts` - Integrate calculation
+- `QEnabler-ui/src/pages/quality-scorecard/QualityScorecard.tsx` - Add UI components
 
 ### Database
 - Migration: `018-add-self-rated-quality-to-scorecards.sql`

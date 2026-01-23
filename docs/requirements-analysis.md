@@ -1,8 +1,8 @@
-# CoachQA Requirements Analysis
+# QEnabler Requirements Analysis
 
 **Document Version**: 1.0  
 **Date**: 2024  
-**Purpose**: Comprehensive analysis of CoachQA requirements and comparison with current implementation
+**Purpose**: Comprehensive analysis of QEnabler requirements and comparison with current implementation
 
 ---
 
@@ -21,7 +21,7 @@
 
 ## 🎯 Executive Summary
 
-CoachQA is a **multi-tenant Quality Assistance Platform** designed to help organizations transition from traditional QA (Quality Assurance) to QAa (Quality Assistance) models. The platform enables QEs (Quality Engineers/Coaches) to track their enablement work, measure squad quality maturity, and demonstrate their impact.
+QEnabler is a **multi-tenant platform** designed to help organizations transition from traditional QA (Quality Assurance) to QEnabler (QAa) models. The platform enables QEs (Quality Engineers/Coaches) to track their enablement work, measure squad quality maturity, and demonstrate their impact.
 
 ### Key Requirements
 
@@ -37,7 +37,7 @@ CoachQA is a **multi-tenant Quality Assistance Platform** designed to help organ
 
 ### The Challenge
 
-Modern software teams are shifting from **classical QA** (QA engineers own testing) to **Quality Assistance (QAa)** (everyone is responsible for quality). This shift creates new challenges:
+Modern software teams are shifting from **classical QA** (QA engineers own testing) to **QEnabler (QAa)** (everyone is responsible for quality). This shift creates new challenges:
 
 | Problem | Impact |
 |---------|--------|
@@ -48,9 +48,9 @@ Modern software teams are shifting from **classical QA** (QA engineers own testi
 | **QE career paths become vague** | Leads to disengagement and talent loss |
 | **QE impact is intangible** | Hard to correlate coaching efforts with outcomes |
 
-### The Solution: CoachQA
+### The Solution: QEnabler
 
-CoachQA addresses these challenges through **10 integrated modules** that:
+QEnabler addresses these challenges through **10 integrated modules** that:
 - Log enablement work as first-class activities
 - Visualize quality maturity and progress over time
 - Capture exploratory testing and test debt systematically
@@ -460,8 +460,8 @@ For each module, implement:
 ## 🔗 Related Documents
 
 - [System Overview](./system-overview.md) - Technical architecture documentation
-- [Requirements: Quality Assistance Tool](../requirements/quality-assistance-tool.md) - Core problem and module definitions
-- [Requirements: Tenant Journey](../requirements/Tenant-Organization-User-Journey-in-CoachQA.md) - End-to-end user journey
+- [Requirements: QEnabler Tool](../requirements/quality-assistance-tool.md) - Core problem and module definitions
+- [Requirements: Tenant Journey](../requirements/Tenant-Organization-User-Journey-in-QEnabler.md) - End-to-end user journey
 
 ---
 

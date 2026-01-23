@@ -1,0 +1,46 @@
+name: Documentation CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+    paths:
+      - 'qenabler-docs/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build and Test Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'qenabler-docs/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: ./qenabler-docs
+        run: npm ci
+
+      - name: Build documentation
+        working-directory: ./qenabler-docs
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Check build output
+        working-directory: ./qenabler-docs
+        run: |
+          if [ ! -d "build" ]; then
+            echo "Build directory not found!"
+            exit 1
+          fi
+          echo "Build successful! Files generated:"
+          find build -type f | head -20

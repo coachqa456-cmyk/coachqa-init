@@ -5,7 +5,7 @@
 ### Route Configuration
 
 The platform admin login route is correctly configured:
-- **Route File**: `coachqa-backend/src/routes/platformAdmin.routes.ts`
+- **Route File**: `QEnabler-backend/src/routes/platformAdmin.routes.ts`
 - **Route Definition**: `router.post('/login', platformAdminController.login);`
 - **Mounted At**: `/api/platform-admin` (in `app.ts`)
 - **Full Path**: `/api/platform-admin/login`
@@ -14,7 +14,7 @@ The platform admin login route is correctly configured:
 
 1. **Verify Backend Server is Running:**
    ```bash
-   cd coachqa-backend
+   cd QEnabler-backend
    npm run dev
    ```
    
@@ -43,7 +43,7 @@ The platform admin login route is correctly configured:
    This order ensures `/api/platform-admin/login` matches the platform admin routes before the menu routes.
 
 4. **Verify Controller Exists:**
-   - Controller: `coachqa-backend/src/controllers/platformAdmin.controller.ts`
+   - Controller: `QEnabler-backend/src/controllers/platformAdmin.controller.ts`
    - Method: `export const login = async (...) => { ... }`
 
 ### Common Issues
@@ -52,7 +52,7 @@ The platform admin login route is correctly configured:
 **Symptom**: XML error response (unusual for Express)
 **Solution**: Start the backend server
 ```bash
-cd coachqa-backend
+cd QEnabler-backend
 npm run dev
 ```
 
@@ -61,7 +61,7 @@ npm run dev
 **Solution**: Fix any TypeScript errors (like unused parameters)
 ```bash
 # Check for errors
-cd coachqa-backend
+cd QEnabler-backend
 npm run build
 ```
 
@@ -160,7 +160,7 @@ This ensures that `/api/platform-admin/login` matches the platform admin routes 
 1. **Restart Backend Server:**
    ```bash
    # Stop server (Ctrl+C)
-   cd coachqa-backend
+   cd QEnabler-backend
    npm run dev
    ```
 

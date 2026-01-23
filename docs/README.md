@@ -1,6 +1,6 @@
-# CoachQA Documentation
+# QEnabler Documentation
 
-Welcome to the CoachQA documentation. This folder contains comprehensive documentation about the Quality Assistance Platform.
+Welcome to the QEnabler documentation. This folder contains comprehensive documentation about the QEnabler Platform.
 
 ## 📚 Documentation Index
 
@@ -57,13 +57,13 @@ Welcome to the CoachQA documentation. This folder contains comprehensive documen
 
 Located in the `../requirements/` folder:
 
-- **[Quality Assistance Tool](../requirements/quality-assistance-tool.md)**
+- **[QEnabler Tool](../requirements/quality-assistance-tool.md)**
   - Core problem statement
-  - Why CoachQA exists
+  - Why QEnabler exists
   - Who benefits from the platform
   - Overview of all 10 modules
 
-- **[Tenant Organization User Journey](../requirements/Tenant-Organization-User-Journey-in-CoachQA.md)**
+- **[Tenant Organization User Journey](../requirements/Tenant-Organization-User-Journey-in-QEnabler.md)**
   - End-to-end user journey from registration to active usage
   - Tenant registration and onboarding flow
   - Squad creation and user management
@@ -86,7 +86,7 @@ docs/
 
 requirements/
 ├── quality-assistance-tool.md   # Core problem and module definitions
-└── Tenant-Organization-User-Journey-in-CoachQA.md  # User journey flow
+└── Tenant-Organization-User-Journey-in-QEnabler.md  # User journey flow
 ```
 
 ## 🎯 Key Topics
@@ -123,7 +123,7 @@ The platform consists of 10 core modules:
 - **Want to know what's missing?** → [Requirements Analysis - Gap Analysis](./requirements-analysis.md#gap-analysis)
 - **Want implementation guidance?** → [Requirements Analysis - Implementation Recommendations](./requirements-analysis.md#implementation-recommendations)
 - **Want technical details?** → [System Overview](./system-overview.md)
-- **Want to understand the user journey?** → [Tenant Journey](../requirements/Tenant-Organization-User-Journey-in-CoachQA.md)
+- **Want to understand the user journey?** → [Tenant Journey](../requirements/Tenant-Organization-User-Journey-in-QEnabler.md)
 
 ## 📝 Contributing to Documentation
 

@@ -24,8 +24,9 @@ dist-ssr
 *.sw?
 .env
 secrects
-coachqa-backend/
-coachqa-ui/
-coachqa-docs/
-coachqa-swagger-ui/
-
+qenabler-backend/
+qenabler-ui/
+qenabler-docs/
+qenabler-swagger-ui/
+coachqa-website/
+dist/

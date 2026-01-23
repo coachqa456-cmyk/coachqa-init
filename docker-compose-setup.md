@@ -65,7 +65,7 @@ docker-compose -f docker-compose.dev.yml down -v
 docker-compose -f docker-compose.dev.yml up -d postgres
 
 # Check logs
-docker logs coachqa-postgres-dev
+docker logs qenabler-postgres-dev
 ```
 
 ## What Gets Created
@@ -75,7 +75,7 @@ When using the complete setup, you get:
 - ✅ All database tables and types
 - ✅ System roles and permissions
 - ✅ System menus and menu permissions
-- ✅ Platform admin: `admin@coachqa.com` / `Admin@123`
+- ✅ Platform admin: `admin@qenabler.com` / `Admin@123`
 - ✅ Demo tenant: `demo-tenant`
 - ✅ Demo user: `user@demo.com` / `Demo@123`
 - ✅ All seed data
@@ -119,7 +119,7 @@ USE_COMPLETE_SETUP=false docker-compose -f docker-compose.dev.yml up -d
 
 - ✅ `docker-compose.dev.yml` - Added `USE_COMPLETE_SETUP` environment variable
 - ✅ `docker-compose.yml` - Added `USE_COMPLETE_SETUP` environment variable
-- ✅ `coachqa-backend/migrations/00-init-database.sh` - Checks environment variable
+- ✅ `qenabler-backend/migrations/00-init-database.sh` - Checks environment variable
 
 ## Troubleshooting
 
@@ -128,7 +128,7 @@ USE_COMPLETE_SETUP=false docker-compose -f docker-compose.dev.yml up -d
 Check if the environment variable is set correctly:
 
 ```bash
-docker exec coachqa-postgres-dev env | grep USE_COMPLETE_SETUP
+docker exec qenabler-postgres-dev env | grep USE_COMPLETE_SETUP
 ```
 
 ### Want to See What's Running
@@ -136,7 +136,7 @@ docker exec coachqa-postgres-dev env | grep USE_COMPLETE_SETUP
 Check the initialization logs:
 
 ```bash
-docker logs coachqa-postgres-dev | grep -A 20 "Database Initialization"
+docker logs qenabler-postgres-dev | grep -A 20 "Database Initialization"
 ```
 
 ### Reset Everything

@@ -1,6 +1,6 @@
 # Squad Management
 
-This document describes how Squad Management works in the CoachQA platform. Squads are teams or groups within an organization that can be assigned Quality Engineers (QEs) and members.
+This document describes how Squad Management works in the QEnabler platform. Squads are teams or groups within an organization that can be assigned Quality Engineers (QEs) and members.
 
 ## Table of Contents
 
